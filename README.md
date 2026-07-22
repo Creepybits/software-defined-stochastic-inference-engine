@@ -1,4 +1,5 @@
 # Software-Defined Stochastic Inference Engine (SDSIE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21499380.svg)](https://doi.org/10.5281/zenodo.21499380)
 
 Official repository and research specification for the **Software-Defined Stochastic Inference Engine (SDSIE)**.
 
