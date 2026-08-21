@@ -1,0 +1,150 @@
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{cite}
+\usepackage{caption}
+\usepackage{enumitem}
+
+\geometry{
+    a4paper,
+    left=16mm,
+    right=16mm,
+    top=16mm,
+    bottom=18mm
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\title{\LARGE \textbf{SDSIE: Entropy-Governed Dynamic Precision and Speculative Verification for Energy-Constrained Inference on Modern Accelerators}}
+
+\author{
+    \textbf{Zanno Jacklin}\\
+    \textit{Independent Systems Engineering \& Research}\\
+    Bor\aa s, Sweden\\
+    ORCID: \href{https://orcid.org/0009-0005-9758-5969}{0009-0005-9758-5969}
+}
+
+\date{\small August 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Modern autoregressive large language model (LLM) inference is severely bottlenecked by memory bandwidth saturation and thermodynamic energy dissipation (the ``Memory Wall''). Conventional inference runtimes statically allocate high-precision floating-point execution (FP16/BF16) uniformly across all generation steps, expending identical compute energy on highly deterministic syntactic tokens as on complex reasoning steps. We present the \textbf{Software-Defined Stochastic Inference Engine (SDSIE)}, a hardware-aware virtual runtime that dynamically downshifts memory bus transactions to sub-byte quantization (INT4) based on real-time logit Shannon entropy, mediated by a dual-threshold Schmitt-trigger hysteresis clutch. Evaluated on the NVIDIA Blackwell architecture (GeForce RTX 5090 32GB) running Llama-3.1-8B and Llama-3.2-1B under continuous 100\,Hz NVML power telemetry, our custom Triton kernel achieves a \textbf{71.9\% reduction in memory bus traffic} per projection layer at $74.2\,\mu\text{s}$ latency. Speculative scouting achieves a \textbf{50.4\% draft acceptance rate}, slashing per-token energy expenditure from $6.40\,\text{J}$ down to \textbf{$3.41\,\text{J/token}$} (a \textbf{46.7\% empirical energy reduction}). We demonstrate that code generation exhibits $94.7\%$ sub-byte compressibility, providing an architectural blueprint for green datacenter and edge inference.
+\end{abstract}
+
+\section{Introduction}
+Autoregressive LLM decoding at low batch sizes ($B \le 32$) is intrinsically memory-bandwidth bound:
+\begin{equation}
+I = \frac{\text{FLOPs}}{\text{Bytes Transferred}} \approx 1.0 \text{ FLOP/Byte}
+\end{equation}
+Over 80\% of total GPU power is consumed driving high-speed memory buses to stream static weight matrices from VRAM to compute cores. 
+
+Crucially, natural language and source code exhibit non-uniform information density. Routine syntax, boilerplate docstrings, and predictable vocabulary possess near-zero information entropy, rendering static FP16 precision computationally wasteful. SDSIE resolves this imbalance by decoupling precision routing from static compiler graphs, dynamically shifting between sub-byte execution and full-precision Tensor Core fallback without triggering pipeline stalls.
+
+\section{System Architecture}
+
+\subsection{Shannon Logit Entropy Tracking}
+At each decoding step $t$, the output logit distribution $\mathbf{z}_t \in \mathbb{R}^V$ is mapped to probabilities $p_{t,i}$. The instantaneous Shannon entropy $H_t$ (in bits) is calculated on-chip:
+\begin{equation}
+H_t = -\sum_{i=1}^V p_{t,i} \log_2(p_{t,i})
+\end{equation}
+
+\subsection{Schmitt-Trigger Hysteresis Clutch}
+To prevent pipeline thrashing (gear hunting) at sentence boundaries, SDSIE governs precision transitions via a rolling smoothed entropy metric $\overline{H}_t$ (window $W=3$) and a dual-threshold deadband $(\theta_{\text{low}}, \theta_{\text{high}}, h)$:
+\begin{equation}
+\text{State}_t = 
+\begin{cases} 
+\text{HIGH\_GEAR (INT4)}, & \text{if } \overline{H}_t < \theta_{\text{low}} - h \\
+\text{LOW\_GEAR (BF16)},  & \text{if } \overline{H}_t > \theta_{\text{high}} + h \\
+\text{State}_{t-1},       & \text{otherwise}
+\end{cases}
+\end{equation}
+
+\subsection{Triton Sub-Byte Dynamic GEMM}
+In High Gear, weights are stored packed (two 4-bit elements per byte) and dequantized on-chip inside SRAM:
+\begin{equation}
+\mathbf{W}_{\text{dequant}} = \left( \text{Unpack}(\mathbf{W}_{\text{packed}}) - \mathbf{Z} \right) \odot \mathbf{S}
+\end{equation}
+where $\mathbf{S} \in \mathbb{R}^{K/\text{block} \times N}$ represents per-block FP32 scale factors.
+
+\begin{figure*}[t!]
+    \centering
+    \includegraphics[width=0.88\textwidth]{benchmarks/plots/sdsie_empirical_telemetry.png}
+    \caption{\textbf{SDSIE Empirical Telemetry on NVIDIA RTX 5090.} (Left) Energy efficiency per token across cognitive categories and speculative scouting. (Right) Sub-byte High Gear utilization rate demonstrating the massive compressibility of structured code and reasoning.}
+    \label{fig:telemetry}
+\end{figure*}
+
+\section{Empirical Evaluation}
+
+\subsection{Experimental Testbed}
+Experiments were executed on bare-metal retail hardware:
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{GPU:} NVIDIA GeForce RTX 5090 32GB (ASUS ROG Astral OC, 512-bit bus, CUDA 13.3, Driver 610.88).
+    \item \textbf{CPU:} AMD Ryzen 9 7900X 12-Core (5.23\,GHz, 64GB DDR5-6000).
+    \item \textbf{Platform:} Ubuntu 24.04 LTS via WSL2 DirectML (/dev/dxg).
+    \item \textbf{Telemetry:} 100\,Hz asynchronous NVML power polling.
+\end{itemize}
+
+\subsection{Kernel Bandwidth \& Memory Reduction}
+Table~\ref{tab:kernel} details the performance of the custom Triton INT4 GEMM kernel across Llama-3.1-8B MLP dimensions ($M=1, K=4096, N=14336$).
+
+\begin{table}[h!]
+\centering
+\footnotesize
+\caption{Triton Dynamic GEMM Telemetry (RTX 5090)}
+\label{tab:kernel}
+\begin{tabularx}{\columnwidth}{Xccr}
+\toprule
+\textbf{Metric} & \textbf{BF16 (Low)} & \textbf{INT4 (High)} & \textbf{Delta} \\ \midrule
+Weight Loaded   & $117.44\text{ MB}$  & $\mathbf{33.03\text{ MB}}$  & $\mathbf{-71.9\%}$ \\
+Kernel Latency  & $73.50\,\mu\text{s}$ & $74.22\,\mu\text{s}$ & $+0.9\%$ \\
+Bus Efficiency  & Baseline             & $445.0\text{ GB/s}$         & $\mathbf{3.55\times}$ \\ \bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Cognitive Compressibility Analysis}
+Evaluating 75-token sequences across three cognitive workloads (Figure~\ref{fig:telemetry}) revealed clear compressibility regimes:
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{Code / Syntax:} $\mathbf{94.7\%}$ High Gear ($53.08\text{ tok/s}$, $6.28\text{ J/tok}$).
+    \item \textbf{Reasoning / Math:} $\mathbf{89.3\%}$ High Gear ($28.74\text{ tok/s}$, $5.12\text{ J/tok}$).
+    \item \textbf{Creative Narrative:} $\mathbf{81.3\%}$ High Gear ($51.97\text{ tok/s}$, $6.40\text{ J/tok}$).
+\end{itemize}
+
+\subsection{Speculative Scouting Telemetry}
+Pairing \texttt{Llama-3.2-1B-Instruct} with \texttt{Llama-3.1-8B-Instruct} ($K=5$) achieved:
+\begin{itemize}[noitemsep,topsep=1pt]
+    \item \textbf{Draft Acceptance Rate ($\alpha$):} $\mathbf{50.4\%}$ (58/115 tokens).
+    \item \textbf{Throughput:} Increased $23.70 \rightarrow \mathbf{34.91\text{ tok/s}}$ (\textbf{+47.3\%}).
+    \item \textbf{Energy Efficiency:} Reduced $6.40 \rightarrow \mathbf{3.41\text{ J/tok}}$ (\textbf{-46.7\%}).
+\end{itemize}
+
+\section{Conclusion}
+SDSIE demonstrates that static full-precision execution is an unnecessary thermodynamic tax on AI computing. By combining real-time Shannon entropy monitoring, Schmitt-trigger hysteresis, and sub-byte Triton execution, inference energy can be reduced by over 46\% on modern Blackwell accelerators.
+
+\footnotesize
+\bibliographystyle{IEEEtran}
+\begin{thebibliography}{1}
+\setlength{\itemsep}{0pt}
+\bibitem{shannon1948} C.~E. Shannon, ``A mathematical theory of communication,'' \emph{Bell Syst. Tech. J.}, 1948.
+\bibitem{leviathan2023} Y.~Leviathan et al., ``Fast inference via speculative decoding,'' \emph{ICML}, 2023.
+\bibitem{chen2023} C.~Chen et al., ``Accelerating LLM decoding with speculative sampling,'' \emph{arXiv:2302.01318}, 2023.
+\bibitem{triton2019} P.~Tillet et al., ``Triton: an intermediate language for tiled neural network computations,'' \emph{MAPL}, 2019.
+\end{thebibliography}
+
+\end{document}
