@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Software-Defined Stochastic Inference Engine (SDSIE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22046980.svg)](https://doi.org/10.5281/zenodo.22046980)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21499379.svg)](https://doi.org/10.5281/zenodo.21499379)
 
 Official repository and research specification for the **Software-Defined Stochastic Inference Engine (SDSIE)**.
 
