@@ -9,7 +9,8 @@ Official repository and research specification for the **Software-Defined Stocha
 📄 **[Read the Full Research Paper (PDF)](./sdsie_paper.pdf)**
 
 ## Overview
-The SDSIE is a software-defined runtime layer designed to execute generative AI workloads with high energy efficiency on consumer GPU silicon by dynamically shifting precision, temporal execution, and memory states.
+The SDSIE is a software-defined runtime layer designed to execute generative AI workloads with high energy efficiency on consumer GPU silicon by dynamically shifting precision, temporal execution, and memory states.  
+* **[Interactive presentation with ROI calculations](https://sdsie.github.io/)**
 
 ## Author
 * **Zanno Jacklin** ([Creepybits](https://zanno.se))
