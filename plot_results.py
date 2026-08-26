@@ -1,16 +1,15 @@
 import csv
 import os
 import matplotlib.pyplot as plt
-import numpy as np
 
-csv_path = os.path.expanduser("~/sdsie/benchmarks/master_telemetry.csv")
-output_dir = os.path.expanduser("~/sdsie/benchmarks/plots")
-os.makedirs(output_dir, exist_ok=True)
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+CSV_PATH = os.path.join(REPO_ROOT, "telemetry", "master_telemetry.csv")
+ASSETS_DIR = os.path.join(REPO_ROOT, "assets")
+os.makedirs(ASSETS_DIR, exist_ok=True)
 
-# Read CSV Data
 categories, throughputs, energies, high_gears = [], [], [], []
-if os.path.exists(csv_path):
-    with open(csv_path, "r") as f:
+if os.path.exists(CSV_PATH):
+    with open(CSV_PATH, "r") as f:
         reader = csv.DictReader(f)
         for row in reader:
             cat = row.get("category") or row.get("model_id", "Run")
@@ -19,7 +18,10 @@ if os.path.exists(csv_path):
             energies.append(float(row["joules_per_token"]))
             high_gears.append(float(row["high_gear_pct"]))
 
-# Set dark/modern plotting style
+if not categories:
+    print("❌ No data found in telemetry/master_telemetry.csv. Run cognitive_benchmark.py first.")
+    exit(1)
+
 plt.style.use('dark_background')
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
 
@@ -35,7 +37,7 @@ for bar in bars1:
     yval = bar.get_height()
     ax1.text(bar.get_x() + bar.get_width()/2.0, yval + 0.1, f"{yval:.2f} J", ha='center', va='bottom', fontsize=10, fontweight='bold')
 
-# Plot 2: High Gear Dynamic Downshift Percentage
+# Plot 2: High Gear Utilization
 bars2 = ax2.bar(categories, high_gears, color='#00d26a', edgecolor='white', alpha=0.85, width=0.5)
 ax2.set_title("SDSIE High Gear (Sub-Byte) Utilization Rate (%)", fontsize=13, fontweight='bold', pad=15)
 ax2.set_ylabel("High Gear % (Higher is Better)", fontsize=11)
@@ -48,6 +50,6 @@ for bar in bars2:
     ax2.text(bar.get_x() + bar.get_width()/2.0, yval + 2, f"{yval:.1f}%", ha='center', va='bottom', fontsize=10, fontweight='bold')
 
 plt.tight_layout()
-plot_file = os.path.join(output_dir, "sdsie_empirical_telemetry.png")
+plot_file = os.path.join(ASSETS_DIR, "sdsie_empirical_telemetry.png")
 plt.savefig(plot_file, dpi=300)
-print(f"📊 Publication-grade charts generated and saved to: {plot_file}")
+print(f"📊 Publication-grade chart generated and saved to: {plot_file}")
