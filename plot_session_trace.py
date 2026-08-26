@@ -65,7 +65,7 @@ ax1.annotate(
 )
 
 ax1.set_ylabel("Entropy (Bits / Token)", fontsize=11, fontweight="bold", color="#e0e0e0")
-ax1.set_title(f"SDSIE Stochastic Speculation Telemetry — Llama-3.1-8B (512 Steps @ {data['throughput_tok_s']} tok/s)", fontsize=13, fontweight="bold", pad=12, color="#ffffff")
+ax1.set_title(f"SDSIE Stochastic Speculation Telemetry — Llama-3.1-8B ({len(steps)} Steps @ {data['throughput_tok_s']} tok/s)", fontsize=13, fontweight="bold", pad=12, color="#ffffff")
 ax1.grid(True, linestyle=":", alpha=0.25, color="#557755")
 ax1.legend(loc="upper right", framealpha=0.85, facecolor="#141a14", edgecolor="#223322", fontsize=9)
 ax1.set_ylim(-0.2, max(entropy) + 0.9)
