@@ -91,7 +91,7 @@ vllm_sdsie.patch_vllm()
 
 ## 🔬 Empirical Telemetry: Real-Time Stochastic Speculation
 
-Below is a live 512-token telemetry trace of **Llama-3.1-8B** running on the **NVIDIA GeForce RTX 5090 Blackwell rig** under heavy poetic constraints (*Chant Royal*):
+Below is a live 409-token telemetry trace of **Llama-3.1-8B** running on the **NVIDIA GeForce RTX 5090 Blackwell rig** under heavy poetic constraints (*Chant Royal*):
 
 <p align="center">
   <img src="./assets/sdsie_chant_royal_trace.png" alt="SDSIE Stochastic Telemetry Trace" width="100%">
