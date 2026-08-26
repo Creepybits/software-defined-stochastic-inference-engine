@@ -97,23 +97,49 @@ Below is a live 512-token telemetry trace of **Llama-3.1-8B** running on the **N
 </p>
 
 ### Key Telemetry Observations:
-* **Throughput:** Sustained **46.03 tok/s** across 512 tokens ($11.12\text{s}$ total latency).
-* **Deterministic Meter Cadence ($H_{\text{min}} = 0.0026\text{ bits}$):** When generating predictable meter and repetitive rhyme structures, the clutch locked in **$k=5$ speculative draft** for stretches of over 100 consecutive tokens ($\approx 100\%$ draft acceptance).
-* **Cognitive Search Fork ($H_{\text{max}} = 3.78\text{ bits}$):** When searching for complex multi-stanza rhyme transitions, entropy spiked above $\theta_{\text{high}} = 1.25\text{ bits}$. The clutch instantly engaged **Single-Step Fallback ($k=0$)**, eliminating $\approx 150$ wasted draft FLOPs.
+* **Throughput:** Sustained **50.52 tok/s** across 409 tokens ($8.10\text{s}$ total latency).
+* **Deterministic Meter Cadence ($H_{\text{min}} = 0.0001\text{ bits}$ at Step 164):** When generating predictable meter and repetitive rhyme structures, the clutch locked in **$k=5$ speculative draft** for stretches of over 150 consecutive tokens ($\approx 100\%$ draft acceptance).
+* **Cognitive Search Fork ($H_{\text{max}} = 2.98\text{ bits}$ at Step 32):** During complex multi-stanza rhyme transitions, entropy spiked above $\theta_{\text{high}} = 1.25\text{ bits}$. The clutch instantly engaged **Single-Step Fallback ($k=0$)**, eliminating wasted draft FLOPs during high-uncertainty tokens.
 
 <details>
-<summary>📜 <b>Click to view generated text & prompt</b></summary>
+<summary>📜 <b>Click to view the full 409-token poem output</b></summary>
 
-> **Prompt:** `can you write an original Chant Royal in english please?`
+> **Prompt:** `Write an original Chant Royal poem in English. Do not include any introductory explanation, definitions, structural outlines, or closing remarks. Output only the raw poem verses from the very first word to the final line.`
 >
 > **Output:**
-> *In twilight's hush, where shadows softly fall (A)*  
-> *Amidst the trees, a lonely bird does sing (A)*  
-> *A melancholy tune that echoes through it all (A)*  
-> *A haunting melody that sorrow's heart does cling (A)*  
-> *And in its voice, a longing soul does bring (A)*  
-> *The stars appear, like diamonds in the sky (B)*  
-> *Their gentle twinkle, a celestial sigh (B)...*
+> *Moonlit waves caress the sandy shore (A)*  
+> *Gentle whispers of a love forever more (A)*  
+> *Echoes of a memory that time cannot bore (A)*  
+> *A bittersweet reminder of what we adore (A)*  
+> *And in its beauty, a heart does explore (A)*  
+> *The stars above, a twinkling show (B)*  
+> *Their celestial dance, a wondrous glow (B)*  
+> *The world is hushed, in quiet, darkened low (B)*  
+> *The night's dark veil, a mystery does grow (B)*  
+> *In darkness, fears and doubts do quietly go (B)*  
+> *Moonlit waves caress the sandy shore (A)*  
+> *Gentle whispers of a love forever more (A)*  
+> *Echoes of a memory that time cannot bore (A)*  
+> *A bittersweet reminder of what we adore (A)*  
+> *And in its beauty, a heart does explore (A)*  
+> *The stars above, a twinkling show (B)*  
+> *Their celestial dance, a wondrous glow (B)*  
+> *The world is hushed, in quiet, darkened low (B)*  
+> *The night's dark veil, a mystery does grow (B)*  
+> *In darkness, fears and doubts do quietly go (B)*  
+> *And in the silence, a peaceful heart does stay (C)*  
+> *In stillness, a calm and quiet soul does sway (C)*  
+> *In darkness, a new dawn does slowly break (C)*  
+> *And in its light, a brighter day does make (D)*  
+> *And in its warmth, a heart does start to awake (D)*  
+> *And in its hope, a soul does start to partake (D)*  
+> *Moonlit waves caress the sandy shore so free (E)*  
+> *And in its peace, a heart does start to see (E)*  
+> *And in its calm, a soul does start to be (E)*  
+> *And in the stillness, a heart does start to breathe (C)*  
+> *And in the quiet, a soul does start to grieve (C)*  
+> *And in the darkness, a heart does start to flee (F)*  
+> *(Natural EOS completion at 409 tokens)*
 
 </details>
 
