@@ -11,9 +11,11 @@ import json
 import csv
 from datetime import datetime
 
-# =====================================================================
-# 1. 100Hz NVML POWER MONITOR
-# =====================================================================
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+TELEMETRY_DIR = os.path.join(REPO_ROOT, "telemetry")
+os.makedirs(TELEMETRY_DIR, exist_ok=True)
+MASTER_CSV = os.path.join(TELEMETRY_DIR, "master_telemetry.csv")
+
 class NVMLPowerMonitor:
     def __init__(self, device_index=0, poll_rate_hz=100):
         pynvml.nvmlInit()
@@ -60,9 +62,6 @@ class NVMLPowerMonitor:
         pynvml.nvmlShutdown()
 
 
-# =====================================================================
-# 2. SPECULATIVE SCOUT & VERIFIER ENGINE
-# =====================================================================
 def run_speculative_scout_benchmark(
     target_model_id="meta-llama/Llama-3.1-8B-Instruct",
     scout_model_id="meta-llama/Llama-3.2-1B-Instruct",
@@ -85,7 +84,7 @@ def run_speculative_scout_benchmark(
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    print("[2/3] Loading Target Model (8B) into 32GB VRAM...")
+    print("[2/3] Loading Target Model (8B) into VRAM...")
     target_model = AutoModelForCausalLM.from_pretrained(
         target_model_id,
         dtype=torch.bfloat16,
@@ -101,12 +100,6 @@ def run_speculative_scout_benchmark(
     )
     scout_model.eval()
 
-    print(f"\nVRAM Allocation Summary: {round(torch.cuda.memory_allocated() / 1e9, 2)} GB used out of 34.2 GB")
-    print(f"Prompt: \"{prompt}\"")
-    print("-" * 95)
-    print(f"{'Cycle':<7} | {'Drafted (1B)':<16} | {'Accepted':<10} | {'Accept Rate':<12} | {'Output Token Preview'}")
-    print("-" * 95)
-
     inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
     current_ids = inputs["input_ids"]
 
@@ -121,10 +114,6 @@ def run_speculative_scout_benchmark(
     with torch.inference_mode():
         while tokens_generated < max_target_tokens:
             cycle_count += 1
-            
-            # -------------------------------------------------------------
-            # STEP A: SCOUT MODEL DRAFTS K CANDIDATE TOKENS AUTOREGRESSIVELY
-            # -------------------------------------------------------------
             draft_ids = current_ids.clone()
             draft_tokens = []
             
@@ -135,38 +124,24 @@ def run_speculative_scout_benchmark(
                 draft_ids = torch.cat([draft_ids, next_draft_tok], dim=-1)
 
             total_drafted += K
-
-            # -------------------------------------------------------------
-            # STEP B: TARGET MODEL VERIFIES ALL K DRAFT TOKENS IN 1 PASS
-            # -------------------------------------------------------------
-            # Target model forward pass over prefix + all K draft tokens
             target_out = target_model(draft_ids)
             target_logits = target_out.logits
-
-            # Prefix length
             prefix_len = current_ids.shape[1]
 
-            # -------------------------------------------------------------
-            # STEP C: SPECULATIVE VERIFICATION & ACCEPTANCE CRITERION
-            # -------------------------------------------------------------
             accepted_in_cycle = 0
             new_accepted_ids = []
 
             for i in range(K):
-                # Verify token at position prefix_len - 1 + i
                 expected_token = torch.argmax(target_logits[:, prefix_len - 1 + i, :], dim=-1, keepdim=True)
                 drafted_token = draft_tokens[i]
 
                 if expected_token.item() == drafted_token.item():
-                    # Token Accepted!
                     accepted_in_cycle += 1
                     new_accepted_ids.append(drafted_token)
                 else:
-                    # Token Rejected -> Correct with Target's prediction and halt draft evaluation
                     new_accepted_ids.append(expected_token)
                     break
             else:
-                # If all K were accepted, add the bonus prediction from the target model
                 bonus_token = torch.argmax(target_logits[:, prefix_len - 1 + K, :], dim=-1, keepdim=True)
                 new_accepted_ids.append(bonus_token)
 
@@ -175,10 +150,8 @@ def run_speculative_scout_benchmark(
             current_ids = torch.cat([current_ids, accepted_tensor], dim=-1)
             tokens_generated += accepted_tensor.shape[1]
 
-            # Preview string
-            tok_preview = tokenizer.decode(accepted_tensor[0], clean_up_tokenization_spaces=False)
             accept_rate = (accepted_in_cycle / K) * 100.0
-            print(f"Cycle {cycle_count:<2} | {K:<16} | {accepted_in_cycle}/{K:<8} | {accept_rate:<11.1f}% | {repr(tok_preview)}")
+            print(f"Cycle {cycle_count:<2} | Drafted: {K} | Accepted: {accepted_in_cycle}/{K} ({accept_rate:.1f}%)")
 
             if tokenizer.eos_token_id in accepted_tensor:
                 break
@@ -199,22 +172,10 @@ def run_speculative_scout_benchmark(
     print("=" * 95)
     print("📊 SPECULATIVE SCOUT TELEMETRY SUMMARY:")
     print(f" • Tokens Generated           : {tokens_generated} tokens")
-    print(f" • Speculative Cycles         : {cycle_count} cycles")
-    print(f" • Scout Draft Acceptance Rate: {global_accept_rate:.1f}% ({total_accepted}/{total_drafted} tokens accepted)")
     print(f" • Real Speculative Throughput: {tok_per_sec:.2f} tokens/sec")
-    print(f" • Average GPU Power          : {total_pwr_w:.2f} Watts")
-    print(f" • Total Energy Consumed      : {total_energy_j:.4f} Joules")
-    print(f" • Energy Efficiency          : {joules_per_tok * 1000.0:.2f} mJ / token (Joules/tok: {joules_per_tok:.6f})")
+    print(f" • Energy Efficiency          : {joules_per_tok:.4f} Joules/token")
+    print(f" • Scout Draft Acceptance Rate: {global_accept_rate:.1f}%")
     print("=" * 95)
-
-    print("\n🎯 FULL GENERATED OUTPUT:")
-    print(tokenizer.decode(current_ids[0][inputs['input_ids'].shape[1]:], skip_special_tokens=True))
-    print("=" * 95)
-
-    # Auto-log to master CSV and JSON report
-    output_dir = os.path.expanduser("~/sdsie/benchmarks")
-    os.makedirs(output_dir, exist_ok=True)
-    master_csv = os.path.join(output_dir, "master_telemetry.csv")
 
     log_entry = {
         "timestamp": datetime.now().isoformat(),
@@ -228,18 +189,18 @@ def run_speculative_scout_benchmark(
         "low_gear_pct": round(100.0 - global_accept_rate, 1)
     }
 
-    file_exists = os.path.exists(master_csv)
-    with open(master_csv, "a", newline="") as f:
+    file_exists = os.path.exists(MASTER_CSV)
+    with open(MASTER_CSV, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(log_entry.keys()))
         if not file_exists:
             writer.writeheader()
         writer.writerow(log_entry)
 
-    spec_json = os.path.join(output_dir, "speculative_scout_report.json")
+    spec_json = os.path.join(TELEMETRY_DIR, "speculative_scout_report.json")
     with open(spec_json, "w") as f:
         json.dump(log_entry, f, indent=2)
 
-    print(f"💾 Speculative benchmark appended to: {master_csv}")
+    print(f"💾 Benchmark saved to: {MASTER_CSV}")
 
 if __name__ == "__main__":
     run_speculative_scout_benchmark()
