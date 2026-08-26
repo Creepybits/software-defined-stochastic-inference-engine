@@ -23,8 +23,20 @@ Official repository and research specification for the **Software-Defined Stocha
 | **Energy Consumption** | 6.40 J / token | **3.41 J / token** | **–46.7% Energy Reduction** |
 | **Memory Bus Traffic** | 117.44 MB / layer | **33.03 MB / layer** | **–71.9% Bus Traffic Cut** |
 | **Kernel Latency** | 73.50 µs | **74.22 µs** | **+0.9% (Zero-Stall SRAM)** |
-| **Throughput Velocity** | 23.70 tok/s | **34.91 tok/s** | **+47.3% Acceleration** |
+| **Throughput Velocity** | 23.70 tok/s | **34.91 tok/s** | **+47.3% Acceleration** |  
 
+---
+
+## 🔬 Reproducibility & Benchmark Quickstart
+
+To reproduce the bare-metal kernel latency and power telemetry on your local GPU (NVIDIA Ampere, Ada Lovelace, Hopper, or Blackwell):
+
+### 1. Environment Setup
+```bash
+git clone https://github.com/Creepybits/software-defined-stochastic-inference-engine.git
+cd software-defined-stochastic-inference-engine
+pip install torch triton nvidia-ml-py pynvml
+```
 ## Author
 * **Zanno Jacklin** ([Creepybits](https://zanno.se))
 * Date: August 2026
