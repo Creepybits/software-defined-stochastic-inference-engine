@@ -1,13 +1,12 @@
 # vllm_sdsie/kernels/entropy_clutch.py
 import torch
-import math
 
 class SchmittTriggerEntropyClutch:
     """
     Industrial Schmitt-Trigger Hysteresis Clutch for Speculative Decoding.
-    Eliminates draft-model thrashing by maintaining dual entropy thresholds.
+    Numerically stable for large-vocabulary LLMs (128k+ tokens).
     """
-    def __init__(self, theta_low: float = 0.55, theta_high: float = 0.82, alpha: float = 0.35):
+    def __init__(self, theta_low: float = 0.55, theta_high: float = 1.25, alpha: float = 0.35):
         self.theta_low = theta_low     # Threshold to re-engage speculative draft
         self.theta_high = theta_high   # Threshold to disengage draft (fallback)
         self.alpha = alpha             # EMA smoothing coefficient
@@ -16,31 +15,29 @@ class SchmittTriggerEntropyClutch:
 
     def compute_token_entropy(self, logits: torch.Tensor) -> float:
         """
-        Computes Shannon entropy: H(p) = -sum(p * log(p)) on the top logits.
+        Computes Shannon entropy: H(p) = -sum(p * log2(p)) in float32.
         """
-        probs = torch.softmax(logits[-1, :], dim=-1)
-        # Numerical stability clamp
-        probs = torch.clamp(probs, min=1e-9, max=1.0)
-        entropy = -torch.sum(probs * torch.log2(probs)).item()
-        return entropy
+        # Flatten to 1D and cast to float32 to prevent FP16 overflow across 128k vocab
+        logits_f32 = logits.view(-1, logits.shape[-1])[-1].float()
+        log_probs = torch.log_softmax(logits_f32, dim=-1)
+        probs = torch.exp(log_probs)
+        
+        # H(p) in bits = - sum(p * ln(p)) / ln(2)
+        entropy = -(probs * log_probs).sum().item() / 0.6931471805599453
+        return max(0.0, float(entropy))
 
     def update_and_decide(self, logits: torch.Tensor) -> bool:
-        """
-        Calculates EMA entropy and updates hysteresis state.
-        Returns: True if speculative draft should execute, False for single-step fallback.
-        """
         step_entropy = self.compute_token_entropy(logits)
         
-        # Initialize EMA if first step
         if self.running_entropy == 0.0:
             self.running_entropy = step_entropy
         else:
             self.running_entropy = self.alpha * step_entropy + (1.0 - self.alpha) * self.running_entropy
 
-        # Schmitt-trigger state machine
+        # Schmitt-trigger hysteresis state machine
         if self.speculation_active and self.running_entropy > self.theta_high:
-            self.speculation_active = False  # Disengage clutch (high uncertainty/reasoning fork)
+            self.speculation_active = False  # Disengage draft model
         elif not self.speculation_active and self.running_entropy < self.theta_low:
-            self.speculation_active = True   # Re-engage clutch (low uncertainty/predictable text)
+            self.speculation_active = True   # Re-engage draft model
 
         return self.speculation_active
