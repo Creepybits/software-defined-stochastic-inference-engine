@@ -49,9 +49,10 @@ python benchmark_telemetry.py
 python harness_telemetry.py meta-llama/Llama-3.1-8B-Instruct
 ```
 
-## 📦 Drop-In vLLM Plugin Architecture (`vllm-sdsie`)
+## 📦 Upstream vLLM Plugin Architecture (`vllm-sdsie`)
 
-SDSIE includes an installable, modular runtime plugin for vLLM and open-source inference servers featuring fused sub-byte Triton GEMM kernels and Schmitt-trigger speculative decoding control:
+> ⚠️ **Status:** **Active Development / Alpha**  
+> The core Triton INT4 SRAM dequantization kernels, Schmitt-trigger speculative controller, and standalone reference engine (`sdsie_server.py`) are fully verified and functional. Native, zero-configuration worker-level integration directly into upstream `vllm serve` pipelines is actively under development (targeted for the upcoming NGI Zero / NLnet milestone cycle).
 
 ### 1. Installation
 ```bash
@@ -79,7 +80,7 @@ python test_spec_controller.py
 ```
 Telemetry: Dynamic draft scaling (k=5 confident → k=0 uncertain fallback).
 
-### 3. Runtime Integration
+### 3. Native Runtime Hook (Experimental)
 ```bash
 import vllm_sdsie
 
