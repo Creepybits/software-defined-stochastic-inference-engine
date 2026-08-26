@@ -88,6 +88,50 @@ vllm_sdsie.patch_vllm()
 ```
 ---
 
+## 🔬 Empirical Telemetry: Real-Time Stochastic Speculation
+
+Below is a live 512-token telemetry trace of **Llama-3.1-8B** running on the **NVIDIA GeForce RTX 5090 Blackwell rig** under heavy poetic constraints (*Chant Royal*):
+
+<p align="center">
+  <img src="./assets/sdsie_chant_royal_trace.png" alt="SDSIE Stochastic Telemetry Trace" width="100%">
+</p>
+
+### Key Telemetry Observations:
+* **Throughput:** Sustained **46.03 tok/s** across 512 tokens ($11.12\text{s}$ total latency).
+* **Deterministic Meter Cadence ($H_{\text{min}} = 0.0026\text{ bits}$):** When generating predictable meter and repetitive rhyme structures, the clutch locked in **$k=5$ speculative draft** for stretches of over 100 consecutive tokens ($\approx 100\%$ draft acceptance).
+* **Cognitive Search Fork ($H_{\text{max}} = 3.78\text{ bits}$):** When searching for complex multi-stanza rhyme transitions, entropy spiked above $\theta_{\text{high}} = 1.25\text{ bits}$. The clutch instantly engaged **Single-Step Fallback ($k=0$)**, eliminating $\approx 150$ wasted draft FLOPs.
+
+<details>
+<summary>📜 <b>Click to view generated text & prompt</b></summary>
+
+> **Prompt:** `can you write an original Chant Royal in english please?`
+>
+> **Output:**
+> *In twilight's hush, where shadows softly fall (A)*  
+> *Amidst the trees, a lonely bird does sing (A)*  
+> *A melancholy tune that echoes through it all (A)*  
+> *A haunting melody that sorrow's heart does cling (A)*  
+> *And in its voice, a longing soul does bring (A)*  
+> *The stars appear, like diamonds in the sky (B)*  
+> *Their gentle twinkle, a celestial sigh (B)...*
+
+</details>
+
+---
+
+## 🌐 Running the Sovereign Web Demo
+
+You can spin up the full local inference stack with the included zero-dependency Web UI:
+
+```bash
+# Terminal 1: Launch the SDSIE inference server
+python sdsie_server.py --port 8000
+
+# Terminal 2: Launch the local Web UI
+python web_ui.py
+```
+---
+
 ## 📊 Comprehensive Hardware Telemetry Matrix
 
 The 4-panel telemetry matrix below illustrates empirical measurements captured across varied cognitive workloads and speculative engine configurations on bare-metal **NVIDIA Blackwell (RTX 5090 32GB)** under continuous 100 Hz NVML power polling:
