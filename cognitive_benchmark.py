@@ -11,6 +11,12 @@ import json
 import csv
 from datetime import datetime
 
+# Set output directory to ./telemetry inside the repo
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+TELEMETRY_DIR = os.path.join(REPO_ROOT, "telemetry")
+os.makedirs(TELEMETRY_DIR, exist_ok=True)
+MASTER_CSV = os.path.join(TELEMETRY_DIR, "master_telemetry.csv")
+
 class NVMLPowerMonitor:
     def __init__(self, device_index=0, poll_rate_hz=100):
         pynvml.nvmlInit()
@@ -90,10 +96,6 @@ def calculate_shannon_entropy(logits: torch.Tensor) -> float:
 
 
 def run_cognitive_suite(model_id="meta-llama/Llama-3.1-8B-Instruct"):
-    output_dir = os.path.expanduser("~/sdsie/benchmarks")
-    os.makedirs(output_dir, exist_ok=True)
-    master_csv = os.path.join(output_dir, "master_telemetry.csv")
-
     test_prompts = [
         {"category": "Reasoning / Math", "prompt": "Solve this step-by-step: A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?", "max_tokens": 75},
         {"category": "Code / Syntax", "prompt": "Write a clean Python function to calculate the Fibonacci sequence up to N using memoization with docstrings.", "max_tokens": 75},
@@ -154,7 +156,6 @@ def run_cognitive_suite(model_id="meta-llama/Llama-3.1-8B-Instruct"):
                 gear_counts[gear] += 1
 
                 next_tok = torch.argmax(logits, dim=-1, keepdim=True)
-                tok_str = tokenizer.decode(next_tok[0], clean_up_tokenization_spaces=False)
 
                 torch.cuda.synchronize()
                 t1 = time.perf_counter()
@@ -190,15 +191,14 @@ def run_cognitive_suite(model_id="meta-llama/Llama-3.1-8B-Instruct"):
         }
         suite_results.append(res)
 
-        print(f"Output: {tokenizer.decode(generated_ids[0][inputs['input_ids'].shape[1]:], skip_special_tokens=True)[:100]}...")
         print(f"Result: {tok_sec:.2f} tok/s | {avg_w:.1f} W | {j_per_tok:.4f} J/tok | High Gear: {high_pct:.1f}%")
 
     monitor.stop()
     monitor.close()
 
-    # Append to Master CSV
-    file_exists = os.path.exists(master_csv)
-    with open(master_csv, "a", newline="") as f:
+    # Append to Master CSV in ./telemetry
+    file_exists = os.path.exists(MASTER_CSV)
+    with open(MASTER_CSV, "a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "timestamp", "category", "tokens", "throughput_tok_sec",
             "avg_power_watts", "total_energy_joules", "joules_per_token",
@@ -209,21 +209,12 @@ def run_cognitive_suite(model_id="meta-llama/Llama-3.1-8B-Instruct"):
         for r in suite_results:
             writer.writerow(r)
 
-    # Save Session JSON
-    session_json = os.path.join(output_dir, f"session_{session_timestamp}.json")
+    # Save Session JSON in ./telemetry
+    session_json = os.path.join(TELEMETRY_DIR, f"session_{session_timestamp}.json")
     with open(session_json, "w") as f:
         json.dump(suite_results, f, indent=2)
 
-    # Print Final Summary Comparison Table
-    print("\n" + "=" * 95)
-    print("📊 COGNITIVE SUITE COMPARISON SUMMARY")
-    print("=" * 95)
-    print(f"{'Category':<22} | {'Tokens':<8} | {'Tok/Sec':<9} | {'Power (W)':<10} | {'Joules/Tok':<12} | {'High Gear %':<12}")
-    print("-" * 95)
-    for r in suite_results:
-        print(f"{r['category']:<22} | {r['tokens']:<8} | {r['throughput_tok_sec']:<9.2f} | {r['avg_power_watts']:<10.1f} | {r['joules_per_token']:<12.4f} | {r['high_gear_pct']:<11.1f}%")
-    print("=" * 95)
-    print(f"💾 All logs safely preserved in: {output_dir}/")
+    print(f"\n📁 All telemetry appended to: {MASTER_CSV}")
 
 if __name__ == "__main__":
     run_cognitive_suite()
