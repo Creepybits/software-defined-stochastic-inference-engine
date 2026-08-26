@@ -48,6 +48,21 @@ python benchmark_telemetry.py
 ```bash
 python harness_telemetry.py meta-llama/Llama-3.1-8B-Instruct
 ```
+---
+
+## 📊 Comprehensive Hardware Telemetry Matrix
+
+The 4-panel telemetry matrix below illustrates empirical measurements captured across varied cognitive workloads and speculative engine configurations on bare-metal **NVIDIA Blackwell (RTX 5090 32GB)** under continuous 100 Hz NVML power polling:
+
+<p align="center">
+  <img src="assets/sdsie_telemetry_matrix.png" alt="SDSIE Empirical Telemetry Matrix" width="100%">
+</p>
+
+### Key Architectural Takeaways:
+1. **Thermodynamic Efficiency:** Speculative scouting drops energy consumption to **3.41 J / token** compared to standard autoregressive baseline.
+2. **Information Compressibility:** Code generation achieves a **94.7% sub-byte INT4 duty cycle**, validating near-zero syntactic entropy.
+3. **Throughput Scaling:** Fast Speculative (Pure KV) reaches **34.91 tok/s** end-to-end generation velocity.
+4. **Power Dissipation Profile:** Average active power hovers around **119.1 W to 147.2 W** during speculative high-gear execution compared to >330 W unthrottled loads.
 
 ## Author
 * **Zanno Jacklin** ([Creepybits](https://zanno.se))
