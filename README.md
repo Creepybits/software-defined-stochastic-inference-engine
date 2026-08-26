@@ -48,6 +48,44 @@ python benchmark_telemetry.py
 ```bash
 python harness_telemetry.py meta-llama/Llama-3.1-8B-Instruct
 ```
+
+## 📦 Drop-In vLLM Plugin Architecture (`vllm-sdsie`)
+
+SDSIE includes an installable, modular runtime plugin for vLLM and open-source inference servers featuring fused sub-byte Triton GEMM kernels and Schmitt-trigger speculative decoding control:
+
+### 1. Installation
+```bash
+# Clone and install SDSIE in editable mode
+git clone https://github.com/Creepybits/software-defined-stochastic-inference-engine.git
+cd software-defined-stochastic-inference-engine
+pip install -e .
+```
+### 2. Standalone Verification Suite
+* Micro-Kernel Sanity Check:
+```bash
+python test_vllm_sdsie.py
+```
+Telemetry: 28.6 µs isolated GEMM latency on RTX 5090 Blackwell.
+
+* Full Llama-3-8B SwiGLU MLP Block Forward Pass:
+```bash
+python test_transformer_block.py
+```
+Telemetry: 155.8 µs layer latency (–75.0% global VRAM memory bus traffic reduction).
+
+* Entropy-Gated Speculative Controller:
+```bash
+python test_spec_controller.py
+```
+Telemetry: Dynamic draft scaling (k=5 confident → k=0 uncertain fallback).
+
+### 3. Runtime Integration
+```bash
+import vllm_sdsie
+
+# Dynamically hooks SDSIE sub-byte kernels into the active engine runner
+vllm_sdsie.patch_vllm()
+```
 ---
 
 ## 📊 Comprehensive Hardware Telemetry Matrix
@@ -57,6 +95,8 @@ The 4-panel telemetry matrix below illustrates empirical measurements captured a
 <p align="center">
   <img src="assets/sdsie_telemetry_matrix.png" alt="SDSIE Empirical Telemetry Matrix" width="100%">
 </p>
+
+---
 
 ### Key Architectural Takeaways:
 1. **Thermodynamic Efficiency:** Speculative scouting drops energy consumption to **3.41 J / token** compared to standard autoregressive baseline.
