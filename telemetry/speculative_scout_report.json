@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-08-26T06:32:09.825702",
+  "category": "Speculative Scout (1B->8B)",
+  "tokens": 81,
+  "throughput_tok_sec": 35.18,
+  "avg_power_watts": 128.9,
+  "total_energy_joules": 296.7869,
+  "joules_per_token": 3.664035,
+  "high_gear_pct": 50.4,
+  "low_gear_pct": 49.6
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-08-26T06:33:16",
+  "hardware": "NVIDIA GeForce RTX 5090 32GB",
+  "dimensions": {
+    "M": 1,
+    "K": 4096,
+    "N": 14336
+  },
+  "low_gear_bf16": {
+    "latency_us": 78.78,
+    "bandwidth_gb_s": 1490.75
+  },
+  "high_gear_int4_triton": {
+    "latency_us": 77.03,
+    "bandwidth_gb_s": 405.0,
+    "reduction_pct": 73.4
+  }
+}
