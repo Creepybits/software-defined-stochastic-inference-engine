@@ -94,8 +94,8 @@ def log_telemetry_entry(data: dict):
     os.makedirs(os.path.expanduser('~/sdsie/runs'), exist_ok=True)
     time_tag = datetime.now().strftime('%Y%m%d_%H%M%S')
     
-    json_path = os.path.expanduser("~/sdsie/telemetry_ledger.json")
-    csv_path = os.path.expanduser("~/sdsie/telemetry_ledger.csv")
+    json_path = os.path.join(os.path.dirname(__file__), "telemetry", "telemetry_ledger.json")
+    csv_path = os.path.join(os.path.dirname(__file__), "telemetry", "telemetry_ledger.csv")
 
     # 1. Append to JSON array
     ledger = []
