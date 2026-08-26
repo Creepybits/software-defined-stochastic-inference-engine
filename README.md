@@ -37,6 +37,18 @@ git clone https://github.com/Creepybits/software-defined-stochastic-inference-en
 cd software-defined-stochastic-inference-engine
 pip install torch triton nvidia-ml-py pynvml
 ```
+### 2. Run Benchmarks
+
+#### A. Isolated Triton SRAM Kernel Micro-Benchmark (Fast, 2s run)
+```bash
+python benchmark_telemetry.py
+```
+
+### B. End-to-End Autoregressive Model Profiler (Full Llama-3.1-8B)
+```bash
+python harness_telemetry.py meta-llama/Llama-3.1-8B-Instruct
+```
+
 ## Author
 * **Zanno Jacklin** ([Creepybits](https://zanno.se))
 * Date: August 2026
