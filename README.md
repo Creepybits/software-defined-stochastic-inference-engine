@@ -162,8 +162,8 @@ SDSIE is actively engaging the open-source inference ecosystem to upstream dynam
 ___
 ## 📜 Scientific Archival & Citation
 SDSIE is permanently archived under CERN / Zenodo:
-* Master Concept DOI: [10.5281/zenodo.21499379](https://doi.org/10.5281/zenodo.21499379)
-* Latest Formal Paper Release (v1.2.2): [10.5281/zenodo.22129912](https://zenodo.org/records/22129912)
+* Permanent Concept DOI: [10.5281/zenodo.21499379](https://doi.org/10.5281/zenodo.21499379)
+
 
 ```bibtex
 @article{jacklin2026sdsie,
@@ -172,7 +172,7 @@ SDSIE is permanently archived under CERN / Zenodo:
   journal={IEEE Transactions on Sustainable Computing / ACM MLSys Baseline},
   year={2026},
   publisher={Zenodo},
-  doi={10.5281/zenodo.22129912}
+  doi={10.5281/zenodo.21499379}
 }
 ```
 ___
