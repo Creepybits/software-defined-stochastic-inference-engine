@@ -1,0 +1,55 @@
+{
+  "title": "Software-Defined Stochastic Inference Engine (SDSIE): Energy-Proportional LLM Serving via Fused SRAM Dequantization and Entropy-Gated Speculative Control",
+  "upload_type": "software",
+  "description": "<p>The Software-Defined Stochastic Inference Engine (SDSIE) is an open-source GPU inference runtime layer engineered to reduce the electrical energy and DRAM bandwidth overhead of Large Language Model (LLM) autoregressive generation. SDSIE combines custom OpenAI Triton sub-byte SRAM dequantization GEMM kernels (–75% HBM bus traffic, 28.6 µs isolated latency) with a deterministic Schmitt-trigger stochastic clutch (k=5 confident ↔ k=0 uncertain fallback), cutting end-to-end inference power by 46.7% (6.40 J to 3.41 J/token) on NVIDIA GeForce RTX 5090 Blackwell hardware.</p>",
+  "creators": [
+    {
+      "name": "Jacklin, Zanno",
+      "affiliation": "Creepybits",
+      "orcid": "0000-0001-9164-4650"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "NVIDIA",
+    "Blackwell",
+    "RTX 5090",
+    "Triton",
+    "GPU Kernels",
+    "SRAM Dequantization",
+    "Memory Wall",
+    "Sub-Byte GEMM",
+    "Memory Bandwidth Optimization",
+    "Large Language Models",
+    "Autoregressive Decoding",
+    "Dynamic Quantization",
+    "INT4 Quantization",
+    "Speculative Decoding",
+    "Speculative Verification",
+    "Shannon Entropy",
+    "Schmitt Trigger Hysteresis",
+    "Energy-Efficient AI",
+    "Green Computing",
+    "Datacenter Telemetry",
+    "NVML Power Profiling",
+    "Green AI"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Creepybits/software-defined-stochastic-inference-engine",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://sdsie.github.io/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://zanno.se",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}
