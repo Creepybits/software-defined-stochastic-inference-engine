@@ -1,0 +1,33 @@
+{
+  "fidelity_match_pct": [
+    100.0,
+    100.0,
+    100.0
+  ],
+  "ablation": {
+    "FP16 Baseline (Static, No Spec)": {
+      "tps_mean": 54.38710024891841,
+      "tps_std": 1.3562348106840374,
+      "j_tok_mean": 5.204009259964309,
+      "j_tok_std": 0.06902001307955202,
+      "power_mean": 282.9416608,
+      "power_std": 3.80508879130327
+    },
+    "Static Speculation (Fixed k=5)": {
+      "tps_mean": 54.827443383748765,
+      "tps_std": 0.6420840286185922,
+      "j_tok_mean": 5.263388882838822,
+      "j_tok_std": 0.015942030411123704,
+      "power_mean": 288.5745064,
+      "power_std": 3.178625751240905
+    },
+    "SDSIE Dynamic Spec (Entropy-Gated)": {
+      "tps_mean": 54.970598563551924,
+      "tps_std": 0.17437825483809596,
+      "j_tok_mean": 5.361227785611421,
+      "j_tok_std": 0.02546706046227619,
+      "power_mean": 294.706528,
+      "power_std": 0.9192327976046129
+    }
+  }
+}
