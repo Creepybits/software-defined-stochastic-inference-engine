@@ -113,7 +113,7 @@ Empirical 9-point grid sweep mapping the threshold space $(\theta_{\text{low}}, 
 
 ### 3. Comprehensive Hardware Telemetry Matrix
 <p align="center">
-  <img src="./assets/sdsie_empirical_telemetry.png" alt="SDSIE Hardware Telemetry Matrix" width="100%">
+  <img src="./assets/sdsie_telemetry_matrix.png" alt="SDSIE Hardware Telemetry Matrix" width="100%">
 </p>
 
 ---
