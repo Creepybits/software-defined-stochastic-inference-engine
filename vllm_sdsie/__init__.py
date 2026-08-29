@@ -1,6 +1,6 @@
 # verified/vllm_sdsie/__init__.py
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 __author__ = "Zanno Jacklin <business@zanno.se>"
 
 from vllm_sdsie.kernels.entropy_clutch import SchmittTriggerEntropyClutch
