@@ -6,7 +6,7 @@ Mirrors the structure of the main repo's vllm_sdsie/, but only
 contains files that have passed verification.
 """
 
-__version__ = "1.0.0"
+__version__ = "2.0.1"
 __author__ = "Zanno Jacklin <business@zanno.se>"
 
 from vllm_sdsie.kernels.entropy_clutch import SchmittTriggerEntropyClutch
