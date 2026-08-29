@@ -1,9 +1,4 @@
-# SDSIE: Software-Defined Stochastic Inference Engine  
-
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21499379.svg)](https://doi.org/10.5281/zenodo.21499379)
-[![Hardware](https://img.shields.io/badge/Verified%20On-NVIDIA%20RTX%205090%20Blackwell-10b981.svg)](https://sdsie.github.io/)
-[![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)
+# SDSIE: Software-Defined Stochastic Inference Engine
 
 **Status: Corrected, component-level validation (August 2026).**
 This repository was substantially revised on 2026-08-29 after independent re-verification found that
@@ -39,6 +34,7 @@ repo — but they are not yet wired together into a single accelerated serving p
 | Entropy clutch — computation | ✅ **Validated**, real | Line-by-line reviewed, matches paper's equations, reproducible across runs |
 | Entropy clutch — driving real generation | ❌ **Not yet connected** | Every benchmarked script computes a decision but does not act on it (see below) |
 | Speculative decoding (scout→target) | ✅ **Validated**, real | Up to 1.81× speedup at 85.4% accept rate, 100% output fidelity, N=10 trials/prompt |
+| Speculative decoding — energy reduction | ✅ **Validated**, real | 32.5–60.0% lower J/token vs. FP16 baseline, task-dependent, same N=10 runs above |
 | Calibration (real checkpoint → packed weights) | ❌ **Does not exist yet** | Kernel is only tested against synthetic random weights |
 | End-to-end integrated server | ❌ **Not yet built** | No script combines quantization + entropy gating + real speculation in one running path |
 
@@ -56,6 +52,28 @@ This is not a subtle bug — it's the main remaining engineering task. Connectin
 to the validated branching mechanism and the validated speculative loop is what's left before this
 project can report a genuine end-to-end number.
 
+## Real Telemetry
+
+Every figure below is generated from raw NVML/entropy telemetry in `tools/telemetry/`, produced by
+the scripts in this repo. Nothing here is illustrative or simulated.
+
+![Real entropy trace, 538 generation steps, Llama-3.1-8B](tools/assets/sdsie_chant_royal_trace.png)
+
+*Live Shannon entropy and clutch decisions from a real 538-token generation (`sdsie_server.py`).
+The clutch's decisions are real and correctly computed; this run's generation loop does not yet
+act on them (see Current Status above) — the entropy curve is genuine, the k(t) panel is diagnostic.*
+
+![Energy per token and gear utilization by task category](tools/assets/sdsie_empirical_telemetry.png)
+
+*Energy per token and entropy-gate engagement across three task categories, single-model harness
+(`cognitive_benchmark.py`). Lower J/token and higher gate-engagement both track task determinism.*
+
+![Parameter sensitivity sweep across nine threshold configurations](tools/assets/sdsie_parameter_sweep_pareto.png)
+
+*Clutch engagement vs. hysteresis threshold, and the resulting flat throughput across all nine
+configurations (`sweep_real_model.py`) — the empirical basis for the "Remaining Integration Gap"
+finding above: more clutch engagement does not correspond to more measured speedup in this harness.*
+
 ## Corrections from the original release
 
 | Metric | Originally claimed | Corrected | Why |
@@ -63,7 +81,7 @@ project can report a genuine end-to-end number.
 | Kernel latency | 28.60 µs (–63.1%) | 76.49 µs (–4.0%) | Never reproduced by any script in this repo; real branching test shows a much smaller effect |
 | Memory bandwidth | 75.0% | 71.9–73.4% | Close to original claim; minor correction |
 | End-to-end throughput | 50.52 tok/s ("speculative") | 50.13 tok/s (plain generation) | Same script produces this number, but it does not perform real speculation (see Current Status) |
-| Energy reduction | 46.7% (6.40→3.41 J) | 32.5%–60.0%, task-dependent (real, N≥10, fidelity-checked) | Original figure unreproducible; real measurement shows reduction scales with draft-acceptance rate rather than being a fixed constant |
+| Energy reduction | 46.7% (flat, single figure, 6.40→3.41 J) | **32.5–60.0%, task-dependent** (real, N=10 trials/prompt, 100% fidelity) | Original flat figure unreproducible; real measurement (found in `academic_validation_results_v4.json`, already collected but not previously surfaced) shows reduction scales with draft-acceptance rate rather than being constant |
 
 Full details and real telemetry are in [`sdsie_paper.tex`](./sdsie_paper.tex) (build with
 `pdflatex sdsie_paper.tex` — run twice) and in `tools/telemetry/`, where every number above is
