@@ -1,0 +1,54 @@
+{
+  "title": "SDSIE: Software-Defined Stochastic Inference Engine",
+  "description": "Open-source (Apache-2.0) GPU inference layer exploring energy-proportional LLM serving via a fused Triton INT4 SRAM-dequantization kernel and an entropy-gated Schmitt-trigger speculative decoding clutch. Each core component is independently validated with real, reproducible telemetry; see the repository README for current validation status and the corrections table.",
+  "creators": [
+    {
+      "name": "Jacklin, Zanno",
+      "affiliation": "Creepybits",
+      "orcid": "0000-0001-9164-4650"
+    }
+  ],
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "keywords": [
+    "NVIDIA",
+    "Blackwell",
+    "Triton",
+    "GPU Kernels",
+    "SRAM Dequantization",
+    "Memory Wall",
+    "Sub-Byte GEMM",
+    "Large Language Models",
+    "LLM",
+    "Dynamic Quantization",
+    "Speculative Decoding",
+    "Speculative Verification",
+    "Shannon Entropy",
+    "Schmitt Trigger Hysteresis",
+    "Energy-Efficient AI",
+    "Green Computing",
+    "NVML Power Profiling",
+    "Green AI"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://sdsie.github.io/",
+      "relation": "isDescribedBy",
+      "resource_type": "publication-technicalnote",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Creepybits/software-defined-stochastic-inference-engine",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://zanno.se",
+      "relation": "isIdenticalTo",
+      "scheme": "url"
+    }
+  ],
+  "communities": []
+}
