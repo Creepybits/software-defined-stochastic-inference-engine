@@ -63,7 +63,7 @@ project can report a genuine end-to-end number.
 | Kernel latency | 28.60 µs (–63.1%) | 76.49 µs (–4.0%) | Never reproduced by any script in this repo; real branching test shows a much smaller effect |
 | Memory bandwidth | 75.0% | 71.9–73.4% | Close to original claim; minor correction |
 | End-to-end throughput | 50.52 tok/s ("speculative") | 50.13 tok/s (plain generation) | Same script produces this number, but it does not perform real speculation (see Current Status) |
-| Energy reduction | 46.7% (6.40→3.41 J) | Not currently reproducible | No script ties a real baseline and a real accelerated path together to produce this figure |
+| Energy reduction | 46.7% (6.40→3.41 J) | 32.5%–60.0%, task-dependent (real, N≥10, fidelity-checked) | Original figure unreproducible; real measurement shows reduction scales with draft-acceptance rate rather than being a fixed constant |
 
 Full details and real telemetry are in [`sdsie_paper.tex`](./sdsie_paper.tex) (build with
 `pdflatex sdsie_paper.tex` — run twice) and in `tools/telemetry/`, where every number above is
