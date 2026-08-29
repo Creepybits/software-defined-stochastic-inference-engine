@@ -1,0 +1,101 @@
+[
+  {
+    "theta_low": 0.35,
+    "theta_high": 1.0,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.755,
+    "joules_per_token": 4.875,
+    "throughput_tok_s": 49.36,
+    "speculation_percentage": 0.0,
+    "avg_power_watts": 240.64
+  },
+  {
+    "theta_low": 0.35,
+    "theta_high": 1.25,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.643,
+    "joules_per_token": 5.424,
+    "throughput_tok_s": 51.45,
+    "speculation_percentage": 0.0,
+    "avg_power_watts": 279.06
+  },
+  {
+    "theta_low": 0.35,
+    "theta_high": 1.5,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.637,
+    "joules_per_token": 5.461,
+    "throughput_tok_s": 51.57,
+    "speculation_percentage": 0.0,
+    "avg_power_watts": 281.61
+  },
+  {
+    "theta_low": 0.55,
+    "theta_high": 1.0,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.637,
+    "joules_per_token": 5.465,
+    "throughput_tok_s": 51.57,
+    "speculation_percentage": 4.4,
+    "avg_power_watts": 281.83
+  },
+  {
+    "theta_low": 0.55,
+    "theta_high": 1.25,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.66,
+    "joules_per_token": 5.482,
+    "throughput_tok_s": 51.14,
+    "speculation_percentage": 5.9,
+    "avg_power_watts": 280.32
+  },
+  {
+    "theta_low": 0.55,
+    "theta_high": 1.5,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.649,
+    "joules_per_token": 5.465,
+    "throughput_tok_s": 51.33,
+    "speculation_percentage": 9.6,
+    "avg_power_watts": 280.54
+  },
+  {
+    "theta_low": 0.75,
+    "theta_high": 1.25,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.651,
+    "joules_per_token": 5.476,
+    "throughput_tok_s": 51.29,
+    "speculation_percentage": 13.2,
+    "avg_power_watts": 280.88
+  },
+  {
+    "theta_low": 0.75,
+    "theta_high": 1.5,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.626,
+    "joules_per_token": 5.456,
+    "throughput_tok_s": 51.78,
+    "speculation_percentage": 18.4,
+    "avg_power_watts": 282.54
+  },
+  {
+    "theta_low": 0.75,
+    "theta_high": 1.75,
+    "alpha": 0.35,
+    "generated_tokens": 136,
+    "elapsed_seconds": 2.65,
+    "joules_per_token": 5.508,
+    "throughput_tok_s": 51.32,
+    "speculation_percentage": 33.8,
+    "avg_power_watts": 282.69
+  }
+]

@@ -1,0 +1,834 @@
+{
+  "timestamp": "2026-08-29T01:27:04.240550",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "prompt_tokens": 78,
+  "completion_tokens": 136,
+  "total_tokens": 214,
+  "elapsed_seconds": 4.069,
+  "throughput_tok_s": 33.42,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write an original Chant Royal poem in English. Do not include any introductory explanation, definitions, structural outlines, or closing remarks. Output only the raw poem verses from the very first word to the final line."
+    }
+  ],
+  "output_text": "In twilight's hush where shadows softly fall\nAmidst the trees their vigil keep\nThe wind whispers secrets to the wall\nAnd darkness gathers, dark and deep\n\nThe stars appear like diamonds bright\nA canopy of light above\nThe world is bathed in lunar light\nAnd all the night's dark magic love\n\nThe moon's pale beams upon the sea\nDo dance and sparkle, wild and free\nThe waves caress the sandy shore\nAnd in the darkness, peace is found\n\nIn this still hour, the heart doth sing\nA melody of love and peace\nThe world is full of beauty's ring\nAnd all the darkness, love release",
+  "telemetry_trace": [
+    {
+      "step": 1,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.216
+    },
+    {
+      "step": 2,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.0723
+    },
+    {
+      "step": 3,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.2117
+    },
+    {
+      "step": 4,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6181
+    },
+    {
+      "step": 5,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0644
+    },
+    {
+      "step": 6,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0911
+    },
+    {
+      "step": 7,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.8818
+    },
+    {
+      "step": 8,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0956
+    },
+    {
+      "step": 9,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9369
+    },
+    {
+      "step": 10,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.8463
+    },
+    {
+      "step": 11,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8546
+    },
+    {
+      "step": 12,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2073
+    },
+    {
+      "step": 13,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.8293
+    },
+    {
+      "step": 14,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.6203
+    },
+    {
+      "step": 15,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2447
+    },
+    {
+      "step": 16,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6717
+    },
+    {
+      "step": 17,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8292
+    },
+    {
+      "step": 18,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8111
+    },
+    {
+      "step": 19,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2698
+    },
+    {
+      "step": 20,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.506
+    },
+    {
+      "step": 21,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.5133
+    },
+    {
+      "step": 22,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.6936
+    },
+    {
+      "step": 23,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8033
+    },
+    {
+      "step": 24,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8343
+    },
+    {
+      "step": 25,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4008
+    },
+    {
+      "step": 26,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2577
+    },
+    {
+      "step": 27,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.828
+    },
+    {
+      "step": 28,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4943
+    },
+    {
+      "step": 29,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.0242
+    },
+    {
+      "step": 30,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.5297
+    },
+    {
+      "step": 31,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.2398
+    },
+    {
+      "step": 32,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.151
+    },
+    {
+      "step": 33,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.5211
+    },
+    {
+      "step": 34,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7245
+    },
+    {
+      "step": 35,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3356
+    },
+    {
+      "step": 36,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8748
+    },
+    {
+      "step": 37,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6137
+    },
+    {
+      "step": 38,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4511
+    },
+    {
+      "step": 39,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3901
+    },
+    {
+      "step": 40,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2088
+    },
+    {
+      "step": 41,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0655
+    },
+    {
+      "step": 42,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.6944
+    },
+    {
+      "step": 43,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3805
+    },
+    {
+      "step": 44,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.735
+    },
+    {
+      "step": 45,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4582
+    },
+    {
+      "step": 46,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.47
+    },
+    {
+      "step": 47,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2912
+    },
+    {
+      "step": 48,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0417
+    },
+    {
+      "step": 49,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.1805
+    },
+    {
+      "step": 50,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9863
+    },
+    {
+      "step": 51,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.8909
+    },
+    {
+      "step": 52,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.242
+    },
+    {
+      "step": 53,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.8075
+    },
+    {
+      "step": 54,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.5258
+    },
+    {
+      "step": 55,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 1.1568
+    },
+    {
+      "step": 56,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4111
+    },
+    {
+      "step": 57,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9185
+    },
+    {
+      "step": 58,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.1912
+    },
+    {
+      "step": 59,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7035
+    },
+    {
+      "step": 60,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8468
+    },
+    {
+      "step": 61,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.3486
+    },
+    {
+      "step": 62,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8568
+    },
+    {
+      "step": 63,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.3618
+    },
+    {
+      "step": 64,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.4573
+    },
+    {
+      "step": 65,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.2136
+    },
+    {
+      "step": 66,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.1097
+    },
+    {
+      "step": 67,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7678
+    },
+    {
+      "step": 68,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.25
+    },
+    {
+      "step": 69,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.3625
+    },
+    {
+      "step": 70,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.62
+    },
+    {
+      "step": 71,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.593
+    },
+    {
+      "step": 72,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.167
+    },
+    {
+      "step": 73,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3043
+    },
+    {
+      "step": 74,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.1217
+    },
+    {
+      "step": 75,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.7364
+    },
+    {
+      "step": 76,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6573
+    },
+    {
+      "step": 77,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2676
+    },
+    {
+      "step": 78,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9882
+    },
+    {
+      "step": 79,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4808
+    },
+    {
+      "step": 80,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5443
+    },
+    {
+      "step": 81,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7101
+    },
+    {
+      "step": 82,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.1128
+    },
+    {
+      "step": 83,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.7241
+    },
+    {
+      "step": 84,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.4708
+    },
+    {
+      "step": 85,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.7391
+    },
+    {
+      "step": 86,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 1.0592
+    },
+    {
+      "step": 87,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5776
+    },
+    {
+      "step": 88,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0301
+    },
+    {
+      "step": 89,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.6701
+    },
+    {
+      "step": 90,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.7101
+    },
+    {
+      "step": 91,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.526
+    },
+    {
+      "step": 92,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.3522
+    },
+    {
+      "step": 93,
+      "mode": "SPECULATIVE",
+      "k_draft": 5,
+      "entropy_bits": 0.6652
+    },
+    {
+      "step": 94,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3227
+    },
+    {
+      "step": 95,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3676
+    },
+    {
+      "step": 96,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.898
+    },
+    {
+      "step": 97,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2539
+    },
+    {
+      "step": 98,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5218
+    },
+    {
+      "step": 99,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4748
+    },
+    {
+      "step": 100,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6843
+    },
+    {
+      "step": 101,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8347
+    },
+    {
+      "step": 102,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6152
+    },
+    {
+      "step": 103,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4833
+    },
+    {
+      "step": 104,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2742
+    },
+    {
+      "step": 105,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4329
+    },
+    {
+      "step": 106,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5034
+    },
+    {
+      "step": 107,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6622
+    },
+    {
+      "step": 108,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4303
+    },
+    {
+      "step": 109,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6724
+    },
+    {
+      "step": 110,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0878
+    },
+    {
+      "step": 111,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.1242
+    },
+    {
+      "step": 112,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3836
+    },
+    {
+      "step": 113,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9387
+    },
+    {
+      "step": 114,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6553
+    },
+    {
+      "step": 115,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.2888
+    },
+    {
+      "step": 116,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6004
+    },
+    {
+      "step": 117,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.113
+    },
+    {
+      "step": 118,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.0709
+    },
+    {
+      "step": 119,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8564
+    },
+    {
+      "step": 120,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7422
+    },
+    {
+      "step": 121,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.6352
+    },
+    {
+      "step": 122,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5208
+    },
+    {
+      "step": 123,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.5362
+    },
+    {
+      "step": 124,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0094
+    },
+    {
+      "step": 125,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.7718
+    },
+    {
+      "step": 126,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.3201
+    },
+    {
+      "step": 127,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4297
+    },
+    {
+      "step": 128,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9296
+    },
+    {
+      "step": 129,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.7261
+    },
+    {
+      "step": 130,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.0651
+    },
+    {
+      "step": 131,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 0.9988
+    },
+    {
+      "step": 132,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.4208
+    },
+    {
+      "step": 133,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 1.8627
+    },
+    {
+      "step": 134,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.2413
+    },
+    {
+      "step": 135,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 3.0478
+    },
+    {
+      "step": 136,
+      "mode": "SINGLE_STEP_FALLBACK",
+      "k_draft": 0,
+      "entropy_bits": 2.2793
+    }
+  ]
+}

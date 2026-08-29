@@ -1,0 +1,2 @@
+timestamp,model_id,tokens_generated,throughput_tok_sec,avg_power_watts,total_energy_joules,energy_per_tok_joules,high_gear_pct,low_gear_pct
+2026-08-29T01:01:55.326843,meta-llama/Llama-3.1-8B-Instruct,60,27.53,132.9,289.6271,4.827119,61.67,38.33
