@@ -1,5 +1,0 @@
-timestamp,category,tokens,throughput_tok_sec,avg_power_watts,total_energy_joules,joules_per_token,high_gear_pct,low_gear_pct
-2026-08-26T06:30:08.169867,Reasoning / Math,75,28.84,159.77,415.4438,5.53925,89.3,10.7
-2026-08-26T06:30:09.679454,Code / Syntax,75,50.03,328.49,492.4552,6.56607,94.7,5.3
-2026-08-26T06:30:10.364168,Creative Narrative,75,50.48,325.64,483.8571,6.451428,81.3,18.7
-2026-08-26T06:32:09.825702,Speculative Scout (1B->8B),81,35.18,128.9,296.7869,3.664035,50.4,49.6
