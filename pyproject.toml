@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "vllm-sdsie"
-version = "2.0.1"
+version = "2.0.2"
 description = "Software-Defined Stochastic Inference Engine plugin for vLLM"
 authors = [{ name = "Zanno Jacklin", email = "business@zanno.se" }]
 license = "Apache-2.0"
