@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  29 AUG 2026 15:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  29 AUG 2026 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -230,6 +230,117 @@ Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 \xmathstrut@box=\box55
 \xmathstrut@dim=\dimen182
 )
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/stix2.sty
+Package: stix2 2021/01/14 v2.0.2-latex STIX Two fonts support package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+LaTeX Font Info:    Changing ? sub-encoding to TS1/0 on input line 78.
+)
+Now handling font encoding LS1 ...
+... no UTF-8 mapping file for font encoding LS1
+Now handling font encoding LS2 ...
+... no UTF-8 mapping file for font encoding LS2
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 78.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `normal' on input line 78.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> LS1/stix2/m/it on input line 78.
+LaTeX Font Info:    Encoding `OML' has changed to `LS1' for symbol font
+(Font)              `letters' in the math version `bold' on input line 78.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> LS1/stix2/m/it on input line 78.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 79.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> LS1/stix2/m/n on input line 79.
+LaTeX Font Info:    Encoding `OT1' has changed to `LS1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 79.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> LS1/stix2/m/n on input line 79.
+\symbold-operators=\mathgroup6
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 81.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> LS1/stix2scr/m/n on input line 81.
+LaTeX Font Info:    Encoding `OMS' has changed to `LS1' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 81.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> LS1/stix2scr/m/n on input line 81.
+\symsymbols2=\mathgroup7
+\symsymbols3=\mathgroup8
+\symsymbols4=\mathgroup9
+\symintegrals=\mathgroup10
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 86.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 8
+6.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> LS2/stix2ex/m/n on input line 86.
+LaTeX Font Info:    Encoding `OMX' has changed to `LS2' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 86.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> LS2/stix2ex/m/n on input line 86.
+\symarrows1=\mathgroup11
+\symarrows2=\mathgroup12
+\symarrows3=\mathgroup13
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  LS1/stix2/m/it --> LS1/stix2/b/it on input line 90.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  LS1/stix2/m/n --> LS1/stix2/b/n on input line 91.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  LS1/stix2scr/m/n --> LS1/stix2scr/b/n on input line 92.
+
+LaTeX Font Info:    Overwriting symbol font `symbols2' in version `bold'
+(Font)                  LS1/stix2frak/m/n --> LS1/stix2frak/b/n on input line 9
+3.
+LaTeX Font Info:    Overwriting symbol font `symbols3' in version `bold'
+(Font)                  LS1/stix2bb/m/n --> LS1/stix2bb/b/n on input line 94.
+LaTeX Font Info:    Overwriting symbol font `symbols4' in version `bold'
+(Font)                  LS1/stix2bb/m/it --> LS1/stix2bb/b/it on input line 95.
+
+LaTeX Font Info:    Overwriting symbol font `integrals' in version `bold'
+(Font)                  LS2/stix2cal/m/n --> LS2/stix2cal/b/n on input line 96.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  LS2/stix2ex/m/n --> LS2/stix2ex/b/n on input line 97.
+LaTeX Font Info:    Overwriting symbol font `arrows1' in version `bold'
+(Font)                  LS1/stix2sf/m/n --> LS1/stix2sf/b/n on input line 98.
+LaTeX Font Info:    Overwriting symbol font `arrows2' in version `bold'
+(Font)                  LS1/stix2sf/m/it --> LS1/stix2sf/b/it on input line 99.
+
+LaTeX Font Info:    Overwriting symbol font `arrows3' in version `bold'
+(Font)                  LS2/stix2tt/m/n --> LS2/stix2tt/b/n on input line 100.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 101.
+LaTeX Font Info:    Redeclaring math alphabet \mathfrak on input line 104.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 107.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 109.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 110.
+LaTeX Info: Redefining \yen on input line 455.
+LaTeX Info: Redefining \circledR on input line 457.
+LaTeX Info: Redefining \checkmark on input line 459.
+LaTeX Info: Redefining \maltese on input line 460.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 697.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 698.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 699.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 700.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 701.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 702.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 703.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 704.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 706.
+LaTeX Font Info:    Redeclaring math accent \check on input line 707.
+LaTeX Font Info:    Redeclaring math accent \vec on input line 715.
+LaTeX Font Info:    Redeclaring math accent \widehat on input line 727.
+LaTeX Font Info:    Redeclaring math accent \widetilde on input line 728.
+LaTeX Info: Redefining \vdots on input line 1517.
+LaTeX Info: Redefining \cdots on input line 1521.
+LaTeX Font Info:    Redeclaring math symbol \mathsterling on input line 1977.
+LaTeX Info: Redefining \not on input line 2141.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -249,9 +360,6 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen183
 \Gin@req@width=\dimen184
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
@@ -466,8 +574,13 @@ Package: cite 2015/02/27  v 5.5
 Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen259
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 29.
+Package hyperref Info: Option `colorlinks' set `true' on input line 30.
+LaTeX Font Info:    Trying to load font information for T1+stix2 on input line 
+32.
 
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/t1stix2.fd
+File: t1stix2.fd 2018/04/02 v2.0.0-latex stix2 T1 font definitions
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count302
@@ -476,26 +589,44 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 (./sdsie_paper.aux)
 \openout1 = `sdsie_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for LS1/stix2/m/n on input line 32.
+LaTeX Font Info:    Trying to load font information for LS1+stix2 on input line
+ 32.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls1stix2.fd
+File: ls1stix2.fd 2018/04/02 v2.0.0-latex stix2 LS1 font definitions
+)
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for LS2/stix2/m/n on input line 32.
+LaTeX Font Info:    Trying to load font information for LS2+stix2 on input line
+ 32.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls2stix2.fd
+File: ls2stix2.fd 2018/04/02 v2.0.0-latex stix2 LS2 font definitions
+)
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 -- Lines per column: 61 (exact).
+LaTeX Info: Command `\dddot' is already robust on input line 32.
+LaTeX Info: Command `\ddddot' is already robust on input line 32.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count303
@@ -518,49 +649,57 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \microtypecontext on input line 31.
-Package microtype Info: Applying patch `item' on input line 31.
-Package microtype Info: Applying patch `toc' on input line 31.
-Package microtype Info: Applying patch `eqnum' on input line 31.
-Package microtype Info: Applying patch `footnote' on input line 31.
-Package microtype Info: Applying patch `verbatim' on input line 31.
+LaTeX Info: Redefining \microtypecontext on input line 32.
+Package microtype Info: Applying patch `item' on input line 32.
+Package microtype Info: Applying patch `toc' on input line 32.
+Package microtype Info: Applying patch `eqnum' on input line 32.
+Package microtype Info: Applying patch `footnote' on input line 32.
+Package microtype Info: Applying patch `verbatim' on input line 32.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 31.
+LaTeX Info: Redefining \showhyphens on input line 32.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ppl.cfg
-File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-Package hyperref Info: Link coloring ON on input line 31.
+Package hyperref Info: Link coloring ON on input line 32.
 
 (./sdsie_paper.out) (./sdsie_paper.out)
 \@outlinefile=\write3
 \openout3 = `sdsie_paper.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 5
-3.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 54
+.
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
-File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `phv' (encoding: OT1).
+(microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 53.
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 54.
+LaTeX Font Info:    Trying to load font information for LS1+stix2scr on input l
+ine 54.
 
-(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
-(RS)
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls1stix2scr.fd
+File: ls1stix2scr.fd 2018/04/02 v2.0.0-latex stix2 script LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
+LaTeX Font Info:    Trying to load font information for LS2+stix2ex on input li
+ne 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls2stix2ex.fd
+File: ls2stix2ex.fd 2018/04/02 v2.0.0-latex stix2 extentions LS2 font definitio
+ns
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -569,7 +708,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -578,113 +717,140 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8.03> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 53.
-LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 53
+LaTeX Font Info:    Trying to load font information for LS1+stix2frak on input 
+line 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls1stix2frak.fd
+File: ls1stix2frak.fd 2018/04/02 v2.0.0-latex stix2 fraktur LS1 font definition
+s
+)
+LaTeX Font Info:    Trying to load font information for LS1+stix2bb on input li
+ne 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls1stix2bb.fd
+File: ls1stix2bb.fd 2018/04/02 v2.0.0-latex stix2 blackboard LS1 font definitio
+ns
+)
+LaTeX Font Info:    Trying to load font information for LS2+stix2cal on input l
+ine 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls2stix2cal.fd
+File: ls2stix2cal.fd 2018/04/02 v2.0.0-latex stix2 calligraphic LS2 font defini
+tions
+)
+LaTeX Font Info:    Trying to load font information for LS1+stix2sf on input li
+ne 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls1stix2sf.fd
+File: ls1stix2sf.fd 2018/04/02 v2.0.0-latex stix2 sans-serif LS1 font definitio
+ns
+)
+LaTeX Font Info:    Trying to load font information for LS2+stix2tt on input li
+ne 54.
+
+(/usr/share/texlive/texmf-dist/tex/latex/stix2-type1/ls2stix2tt.fd
+File: ls2stix2tt.fd 2018/04/02 v2.0.0-latex stix2 typewriter LS2 font definitio
+ns
+)
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8.03> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 54.
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 54
 .
-LaTeX Font Info:    Trying to load font information for U+pzd on input line 53.
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 54.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
-LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 62.
+LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 63.
 
 <assets/sdsie_chant_royal_trace.png, id=79, 1002.3849pt x 498.4221pt>
 File: assets/sdsie_chant_royal_trace.png Graphic file (type png)
 <use assets/sdsie_chant_royal_trace.png>
 Package pdftex.def Info: assets/sdsie_chant_royal_trace.png  used on input line
- 66.
+ 67.
 (pdftex.def)             Requested size: 252.94499pt x 125.76883pt.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5.62097> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 67.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <4.015> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 67.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5.62097> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 68.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <4.015> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 68.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}
+-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/stix2-type1/stix2-mathrm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/s
+tix2-type1/stix2-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix
+2-type1/stix2-mathsf.enc}
 
 
- <./assets/sdsie_chant_royal_trace.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-[]\OT1/ppl/b/n/9.53561 (+20) Validated Spec-u-la-tive De-cod-ing: \OT1/ppl/m/n/
-9.53561 (+20) A real
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc}{/usr/s
+hare/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc}{/usr/share/
+texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathcal.enc} <./assets/sds
+ie_chant_royal_trace.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+[]\T1/stix2/b/n/9.53561 (+20) Validated Spec-u-la-tive De-cod-ing: \T1/stix2/m/
+n/9.53561 (+20) A real
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-\OT1/ppl/m/n/9.53561 (+20) scout(1B)$\OMS/cmsy/m/n/10 !$\OT1/ppl/m/n/9.53561 (+
-20) target(8B) draft-and-verify loop,
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+\T1/stix2/m/n/9.53561 (+20) scout(1B)$\LS1/stix2sf/m/n/9.53561 ™$\T1/stix2/m/n/
+9.53561 (+20) target(8B) draft-and-verify loop,
  []
 
 
-Underfull \hbox (badness 2856) in paragraph at lines 83--84
-\OT1/ppl/m/n/9.53561 (+20) in-de-pen-dently bench-marked with $\OML/cmm/m/it/10
- N[]\OT1/cmr/m/n/10 10$ \OT1/ppl/m/n/9.53561 (+20) tri-als
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+\T1/stix2/m/n/9.53561 (+20) in-de-pen-dently bench-marked with $\LS1/stix2/m/it
+/9.53561 N[]\LS1/stix2/m/n/9.53561 10$ \T1/stix2/m/n/9.53561 (+20) tri-als
  []
 
-
-Underfull \hbox (badness 2469) in paragraph at lines 83--84
-\OT1/ppl/m/n/9.53561 (+20) across prose, ex-plana-tory, and code-generation
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-[]\OT1/ppl/b/n/9.53561 (+20) Open-Source, Re-pro-ducible Teleme-try: \OT1/ppl/m
-/n/9.53561 (+20) All
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-16.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
+7.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `pcr' (encoding: OT1).
+(microtype)             `pcr' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2]
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-\OT1/ppl/m/n/9.53561 (+20) We sep-a-rately bench-mark a real scout(Llama-3.2-
+ [2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc}
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
+\T1/stix2/m/n/9.53561 (+20) We sep-a-rately bench-mark a real scout(Llama-3.2-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-\OT1/ppl/m/n/9.53561 (+20) 1B)$\OMS/cmsy/m/n/10 !$\OT1/ppl/m/n/9.53561 (+20) ta
-rget(Llama-3.1-8B) spec-u-la-tive de-cod-ing loop
+Underfull \hbox (badness 3690) in paragraph at lines 191--192
+\T1/stix2/m/n/9.53561 (+20) at $[][]\LS1/stix2/m/n/9.53561 250$\T1/stix2/m/n/9.
+53561 (+20) , us-ing full-precision (un-cached)
  []
 
-[3]
-<assets/sdsie_empirical_telemetry.png, id=165, 1011.78pt x 433.62pt>
+
+Underfull \hbox (badness 1412) in paragraph at lines 191--192
+\T1/stix2/m/n/9.53561 (+20) re-com-pu-ta-tion for both arms to en-sure a fair r
+el-a-tive
+ []
+
+[3{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathex.enc}{
+/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc
+}]
+<assets/sdsie_empirical_telemetry.png, id=161, 1011.78pt x 433.62pt>
 File: assets/sdsie_empirical_telemetry.png Graphic file (type png)
 <use assets/sdsie_empirical_telemetry.png>
 Package pdftex.def Info: assets/sdsie_empirical_telemetry.png  used on input li
-ne 215.
+ne 216.
 (pdftex.def)             Requested size: 252.94499pt x 108.40472pt.
-
-Underfull \hbox (badness 1412) in paragraph at lines 230--231
-\OT1/ppl/m/n/9.53561 (+20) teleme-try JSON and CSV ledgers, and the ref-er-ence
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
-\OT1/ppl/m/n/9.53561 (+20) server are pub-licly avail-able un-der the Apache-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
-\OT1/ppl/m/n/9.53561 (+20) 2.0 li-cense at [][]$https : / / github . com / Cree
-pybits /
- []
 
 
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
-[4 <./assets/sdsie_empirical_telemetry.png>] [5] (./sdsie_paper.aux)
+[4 <./assets/sdsie_empirical_telemetry.png>]
+Overfull \vbox (1.67868pt too high) has occurred while \output is active []
+
+
+[5] (./sdsie_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -693,36 +859,26 @@ Package rerunfilecheck Info: File `sdsie_paper.out' has not changed.
 (rerunfilecheck)             Checksum: 09E5C967185EB37807F67CDB37F493A4;3697.
  ) 
 Here is how much of TeX's memory you used:
- 14370 strings out of 476182
- 227326 string characters out of 5795595
- 1948975 words of memory out of 5000000
- 35757 multiletter control sequences out of 15000+600000
- 630274 words of font info for 379 fonts, out of 8000000 for 9000
+ 16947 strings out of 476182
+ 262991 string characters out of 5795595
+ 1950975 words of memory out of 5000000
+ 38373 multiletter control sequences out of 15000+600000
+ 1035464 words of font info for 431 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,16n,79p,1624b,613s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pala
-tino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on sdsie_paper.pdf (5 pages, 1083881 bytes).
+ 75i,15n,79p,1624b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Re
+gular.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/zapfding/uzdr.pfb>
+Output written on sdsie_paper.pdf (5 pages, 1571437 bytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
+ 261 PDF objects out of 1000 (max. 8388607)
+ 219 compressed objects within 3 object streams
  50 named destinations out of 1000 (max. 500000)
- 100507 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 76443 words of extra memory for PDF output out of 89155 (max. 10000000)
 

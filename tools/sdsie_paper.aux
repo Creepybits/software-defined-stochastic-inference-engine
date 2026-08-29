@@ -3,12 +3,12 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{dao2022flashattention,kim2023memorywall}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Real-time entropy telemetry of Llama-3.1-8B executing on an NVIDIA RTX 5090 Blackwell workstation (538 generation steps at $50.13\text  { tok/s}$), generated under a structurally constrained poetic prompt. \textbf  {Top:} Output distribution Shannon entropy $H(t)$ in bits/token against dual Schmitt-trigger hysteresis thresholds ($\theta _{\text  {low}}=0.55$, $\theta _{\text  {high}}=1.25$). \textbf  {Bottom:} Clutch state $k(t)$ as computed from live entropy. \textit  {This run uses single-model cached decoding; the clutch's $k(t)$ decision is logged for diagnostic purposes but does not yet branch execution, so the $50.13\text  { tok/s}$ figure reflects baseline generation speed, not accelerated speculative decoding. See Section~\ref {sec:integration_gap}.}}}{1}{figure.1}\protected@file@percent }
-\newlabel{fig:telemetry_trace}{{1}{1}{Real-time entropy telemetry of Llama-3.1-8B executing on an NVIDIA RTX 5090 Blackwell workstation (538 generation steps at $50.13\text { tok/s}$), generated under a structurally constrained poetic prompt. \textbf {Top:} Output distribution Shannon entropy $H(t)$ in bits/token against dual Schmitt-trigger hysteresis thresholds ($\theta _{\text {low}}=0.55$, $\theta _{\text {high}}=1.25$). \textbf {Bottom:} Clutch state $k(t)$ as computed from live entropy. \textit {This run uses single-model cached decoding; the clutch's $k(t)$ decision is logged for diagnostic purposes but does not yet branch execution, so the $50.13\text { tok/s}$ figure reflects baseline generation speed, not accelerated speculative decoding. See Section~\ref {sec:integration_gap}.}}{figure.1}{}}
 \citation{frantar2022gptq}
 \citation{lin2023awq}
 \citation{xiao2023smoothquant}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Real-time entropy telemetry of Llama-3.1-8B executing on an NVIDIA RTX 5090 Blackwell workstation (538 generation steps at $50.13\text  { tok/s}$), generated under a structurally constrained poetic prompt. \textbf  {Top:} Output distribution Shannon entropy $H(t)$ in bits/token against dual Schmitt-trigger hysteresis thresholds ($\theta _{\text  {low}}=0.55$, $\theta _{\text  {high}}=1.25$). \textbf  {Bottom:} Clutch state $k(t)$ as computed from live entropy. \textit  {This run uses single-model cached decoding; the clutch's $k(t)$ decision is logged for diagnostic purposes but does not yet branch execution, so the $50.13\text  { tok/s}$ figure reflects baseline generation speed, not accelerated speculative decoding. See Section~\ref {sec:integration_gap}.}}}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:telemetry_trace}{{1}{1}{Real-time entropy telemetry of Llama-3.1-8B executing on an NVIDIA RTX 5090 Blackwell workstation (538 generation steps at $50.13\text { tok/s}$), generated under a structurally constrained poetic prompt. \textbf {Top:} Output distribution Shannon entropy $H(t)$ in bits/token against dual Schmitt-trigger hysteresis thresholds ($\theta _{\text {low}}=0.55$, $\theta _{\text {high}}=1.25$). \textbf {Bottom:} Clutch state $k(t)$ as computed from live entropy. \textit {This run uses single-model cached decoding; the clutch's $k(t)$ decision is logged for diagnostic purposes but does not yet branch execution, so the $50.13\text { tok/s}$ figure reflects baseline generation speed, not accelerated speculative decoding. See Section~\ref {sec:integration_gap}.}}{figure.1}{}}
 \citation{leviathan2023fast}
 \citation{chen2023speculative}
 \citation{adaedl2024}
@@ -23,8 +23,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Memory-Bound Decoding Dynamics}{2}{subsection.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Sub-Byte Quantization Paradigms}{2}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Speculative Decoding and Acceptance Entropy}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}SDSIE Architecture \& Mechanics}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fused Triton Sub-Byte GEMM Kernel}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}SDSIE Architecture \& Mechanics}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Fused Triton Sub-Byte GEMM Kernel}{2}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Numerically Stable Shannon Entropy Formulation}{3}{subsection.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Schmitt-Trigger Stochastic Hysteresis Control}{3}{subsection.3.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Isolated Linear-Projection Latency and Bandwidth, RTX 5090 Blackwell ($M{=}1$, $K{=}4096$, $N{=}14336$, synthetic weights).}}{3}{table.1}\protected@file@percent }
@@ -40,6 +40,9 @@
 \bibcite{kim2023memorywall}{2}
 \bibcite{frantar2022gptq}{3}
 \bibcite{lin2023awq}{4}
+\bibcite{xiao2023smoothquant}{5}
+\bibcite{leviathan2023fast}{6}
+\bibcite{chen2023speculative}{7}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Speculative Decoding vs. FP16 Baseline, RTX 5090 Blackwell ($N{=}10$ trials/prompt, $100\%$ fidelity on all rows). J/tok values are mean $\pm $ std. dev.}}{4}{table.2}\protected@file@percent }
 \newlabel{tab:spec_results}{{2}{4}{Speculative Decoding vs. FP16 Baseline, RTX 5090 Blackwell ($N{=}10$ trials/prompt, $100\%$ fidelity on all rows). J/tok values are mean $\pm $ std. dev}{table.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Energy per token and entropy-gate utilization by task category, single-model harness, RTX 5090 Blackwell. \textbf  {Left:} Joules/token (lower is better). \textbf  {Right:} Fraction of generation steps in the high-entropy-threshold gear. Gate thresholds ($\theta _{\text  {low}}{=}1.0$, $\theta _{\text  {high}}{=}2.5$) differ from the production values used in Fig.~\ref {fig:telemetry_trace}.}}{4}{figure.2}\protected@file@percent }
@@ -49,9 +52,6 @@
 \newlabel{sec:integration_gap}{{4.5}{4}{Remaining Integration Gap}{subsection.4.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion \& Open-Source Availability}{4}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{4}{section*.1}\protected@file@percent }
-\bibcite{xiao2023smoothquant}{5}
-\bibcite{leviathan2023fast}{6}
-\bibcite{chen2023speculative}{7}
 \bibcite{shazeer2019fast}{8}
 \bibcite{pope2023efficiently}{9}
 \bibcite{dettmers2022llm}{10}

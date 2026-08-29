@@ -2,6 +2,7 @@
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{mathtools}
+\usepackage{stix2}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -23,20 +24,20 @@
     filecolor=magenta,      
     urlcolor=cyan,
     citecolor=blue,
-    pdftitle={Software-Defined Stochastic Inference Engine (SDSIE)},
+    pdftitle={Energy-Proportional LLM Serving via Fused SRAM Dequantization and Entropy-Gated Speculative Control},
     pdfauthor={Zanno Jacklin},
     pdfkeywords={Large Language Models, Speculative Decoding, Quantization, Energy Efficiency, Triton, Hardware Telemetry}
 }
 
 \begin{document}
 
-\title{Software-Defined Stochastic Inference Engine (SDSIE): Component-Level Validation of Fused SRAM Dequantization and Entropy-Gated Speculative Decoding}
+\title{Energy-Proportional LLM Serving via Fused SRAM Dequantization and Entropy-Gated Speculative Control}
 
 \author{Zanno~Jacklin%
 \thanks{Zanno Jacklin is the Principal Investigator at Creepybits, Bor\aa s, Sweden (e-mail: business@zanno.se, ORCID: 0000-0001-9164-4650). Repository: \url{https://github.com/Creepybits/software-defined-stochastic-inference-engine}. Master Concept DOI: 10.5281/zenodo.21499379.}}
 
 \markboth{IEEE Transactions on Sustainable Computing / ACM MLSys Submission Baseline, August 2026}%
-{Jacklin: SDSIE: Component-Level Validation}
+{Jacklin: Energy-Proportional LLM Serving via SRAM Dequantization and Entropy-Gated Control}
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
@@ -46,7 +47,7 @@ This paper introduces the \textbf{Software-Defined Stochastic Inference Engine (
 \end{abstract}
 
 \begin{IEEEkeywords}
-Energy-Proportional Computing, Speculative Decoding, Large Language Models, Triton Kernels, Quantization, Memory Wall, High-Performance Inference.
+SDSIE, Energy-Proportional Computing, Speculative Decoding, Large Language Models, Triton Kernels, Quantization, Memory Wall, High-Performance Inference.
 \end{IEEEkeywords}}
 
 \maketitle
@@ -127,11 +128,11 @@ where $S_N$ and $Z_N$ represent per-channel (or, in the groupwise variant benchm
 \subsection{Numerically Stable Shannon Entropy Formulation}
 To monitor generation uncertainty across large vocabulary distributions (e.g., Llama-3's $|\mathcal{V}| = 128,256$ tokens), naive half-precision softmax calculation triggers floating-point exponent overflow. SDSIE implements a numerically stable float32 log-space formulation:
 \begin{equation}
-\log p_i = \text{LogSoftmax}(z_i) = z_i - \log \sum_{j \in \mathcal{V}} e^{z_j}
+\log p_i = \text{LogSoftmax}(z_i) = z_i - \log \sum_{j \in \mathcal{V}} \mathrm{e}^{z_j}
 \end{equation}
 The true Shannon entropy $H(X)$ in bits is evaluated as:
 \begin{equation}
-H(X) = - \frac{1}{\ln 2} \sum_{i \in \mathcal{V}} e^{\log p_i} \cdot \log p_i
+H(X) = - \frac{1}{\ln 2} \sum_{i \in \mathcal{V}} \mathrm{e}^{\log p_i} \cdot \log p_i
 \end{equation}
 This formulation was verified line-by-line against the equations above and is the sole entropy computation used to produce Fig.~\ref{fig:telemetry_trace}.
 
