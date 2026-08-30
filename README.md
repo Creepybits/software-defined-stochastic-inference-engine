@@ -94,9 +94,7 @@ Do not include any introductory explanation, definitions, structural outlines, o
 
 </details>
 
-[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)  
-
-___  
+[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)
 
 ![Energy per token and gear utilization by task category](tools/assets/sdsie_empirical_telemetry.png)
 
@@ -141,11 +139,10 @@ trials per prompt, the exact fallback/speculation sequence is bit-identical (zer
 expected given deterministic greedy decoding, and good evidence the mechanism itself is stable, not
 flaky.*
 
-**Read honestly:** this is a real result, not a clean win. The mechanism helps a lot on
-highly-speculatable content and currently costs a little on content it correctly identifies as
-unfavorable — because computing the entropy signal itself isn't free. Reducing that per-cycle
-overhead (e.g. reusing verification-step logits instead of a fresh resync pass, as the fixed-K
-version already does) is the natural next optimization.
+The mechanism helps substantially on highly-speculatable content and currently costs a little on
+content it correctly identifies as unfavorable, because computing the entropy signal itself isn't
+free. Reducing that per-cycle overhead — e.g. reusing verification-step logits instead of a fresh
+resync pass, as the fixed-K version already does — is the natural next optimization.
 
 ## Corrections from the original release
 
