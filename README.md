@@ -1,9 +1,9 @@
-# SDSIE: Software-Defined Stochastic Inference Engine
-
+# SDSIE: Software-Defined Stochastic Inference Engine  
+  
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21499379.svg)](https://doi.org/10.5281/zenodo.21499379)
 [![Hardware](https://img.shields.io/badge/Verified%20On-NVIDIA%20RTX%205090%20Blackwell-10b981.svg)](https://sdsie.github.io/)
-[![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)
+[![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)  
 
 **Status: Corrected, component-level validation (August 2026).**
 This repository was substantially revised on 2026-08-29 after independent re-verification found that
@@ -128,7 +128,7 @@ Code:    Write a Python implementation of a binary search tree with type annotat
 
 ![Entropy-gated speculative decoding vs. matched FP16 baseline](tools/assets/step4_vs_baseline_comparison.png)
 
-Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
+*Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
 trials/prompt. The mechanism is a clear win on Code (33.7% faster, 42.1% lower energy) — the clutch
 speculates 80% of cycles there, at a 90.9% accept rate, higher than fixed-K=5's 85.4% on the same
 prompt, suggesting it's preferentially engaging on genuinely favorable windows, not just toggling
@@ -137,12 +137,37 @@ controller is actually 9–12% slower than plain baseline, with energy roughly f
 per-cycle entropy-refresh forward pass isn't offset by enough speculative benefit. Across all 5
 trials per prompt, the exact fallback/speculation sequence is bit-identical (zero variance) —
 expected given deterministic greedy decoding, and good evidence the mechanism itself is stable, not
-flaky.
+flaky.*
 
 The mechanism helps substantially on highly-speculatable content and currently costs a little on
 content it correctly identifies as unfavorable, because computing the entropy signal itself isn't
 free. Reducing that per-cycle overhead — e.g. reusing verification-step logits instead of a fresh
 resync pass, as the fixed-K version already does — is the natural next optimization.
+
+### Threshold Tuning: Reducing the Deficit
+
+A joint grid search over `(theta_low, theta_high)` and `alpha` (6 threshold pairs × 3 alpha values
+× 3 prompts × N=3 trials, 144 trials total) found a single configuration that improves on the
+production defaults across all three prompts simultaneously — not a tradeoff between them:
+
+| Prompt | Production (θ 0.55/1.25, α=0.35) | Best found (θ 0.15/0.70, α=0.65) |
+|---|---|---|
+| Poem | -10.5% | **-5.6%** |
+| Physics | -13.1% | **-4.7%** |
+| Code | +31.1% | **+34.8%** |
+
+No configuration tested eliminates the deficit on Poem or Physics entirely, and tightening
+thresholds further showed diminishing returns without reversing sign.
+
+To investigate the remaining deficit, we isolated the entropy computation itself with a standalone
+microbenchmark (`tools/entropy_overhead_bench.py`, no model, no clutch decision logic). The
+computation includes one `.item()` call per step, which forces a GPU-CPU synchronization to get a
+Python-readable value for the branch decision. That sync costs 31.1 µs/call (+32.5% relative to a
+no-sync variant) at real vocabulary size — real, but roughly 0.1% of per-token generation time,
+too small to explain the 4-13% deficit observed even with zero speculative engagement. The source
+of that residual deficit is still open; untested candidates include VRAM/bandwidth contention from
+the scout model remaining resident even when never invoked, and thermal/clock-state drift between
+separately-launched benchmark runs.
 
 ## Corrections from the original release
 
@@ -167,6 +192,8 @@ vllm_sdsie/
 step3_speculative_scout.py        - Real scout->target speculative decoding (fixed K=5)
 step4_entropy_gated_scout.py      - Same, but clutch genuinely chooses k each cycle (real branching)
 step4_fp16_baseline_matched.py    - Structural twin of step4, no clutch/scout, for clean comparison
+step4_theta_alpha_grid.py         - Joint theta/alpha sweep (real branching), 4 theta x 3 alpha x 3 prompts
+step4_theta_alpha_grid_v2.py      - Follow-up sweep, tighter thresholds than grid v1's best result
 benchmark_academic_validation_v4.py - N=10 baseline-vs-speculative ablation (fixed K=5)
 step2_triton_dynamic.py           - Real branching INT4/FP16 kernel benchmark
 sweep_real_model.py               - Clutch behavior across theta configurations (not yet wired to execution)
@@ -174,6 +201,7 @@ sdsie_server.py                   - Reference server (clutch computed, not yet e
 tools/
   cognitive_benchmark.py          - Per-category energy/gear telemetry
   harness_telemetry.py            - Per-token live entropy/gear trace
+  entropy_overhead_bench.py       - Isolated microbenchmark of the entropy computation's sync cost
   web_ui.py                       - Minimal browser UI for the reference server
   plot_*.py                       - Generates the figures in the paper
   telemetry/                      - Raw JSON/CSV output from every run above
@@ -208,10 +236,9 @@ python3 tools/web_ui.py
 
 The underlying ideas — entropy-gated adaptive speculation, and this general approach — aren't
 unclaimed territory; published work like AdaEDL (Qualcomm, 2024) and SGLang's adaptive speculative
-length show the general technique can pay off elsewhere. As of this update, we can now show that
-*this specific implementation* delivers it too — genuinely, not just logged — with an honest
-accounting of where it currently helps and where it currently costs a little. We'd rather report
-that than repeat an unreproducible headline number, or quietly report only the favorable prompt.
+length show the general technique can pay off elsewhere. As of this update, this specific
+implementation delivers it too — genuinely, not just logged — helping substantially on
+high-determinism content and costing a little on low-determinism content, as detailed above.
 
 ## Citation
 
