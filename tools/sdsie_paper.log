@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 08:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 09:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -764,7 +764,7 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 63.
 
-<assets/sdsie_chant_royal_trace.png, id=83, 1002.3849pt x 498.4221pt>
+<assets/sdsie_chant_royal_trace.png, id=87, 1002.3849pt x 498.4221pt>
 File: assets/sdsie_chant_royal_trace.png Graphic file (type png)
 <use assets/sdsie_chant_royal_trace.png>
 Package pdftex.def Info: assets/sdsie_chant_royal_trace.png  used on input line
@@ -854,45 +854,45 @@ Underfull \hbox (badness 1412) in paragraph at lines 192--193
 el-a-tive
  []
 
-<assets/step4_vs_baseline_comparison.png, id=166, 782.32275pt x 332.08064pt>
+<assets/step4_vs_baseline_comparison.png, id=170, 782.32275pt x 332.08064pt>
 File: assets/step4_vs_baseline_comparison.png Graphic file (type png)
 <use assets/step4_vs_baseline_comparison.png>
 Package pdftex.def Info: assets/step4_vs_baseline_comparison.png  used on input
  line 236.
 (pdftex.def)             Requested size: 252.94499pt x 107.36754pt.
 [4 <./assets/step4_vs_baseline_comparison.png>]
-<assets/sdsie_empirical_telemetry.png, id=183, 1011.78pt x 433.62pt>
+<assets/sdsie_empirical_telemetry.png, id=188, 1011.78pt x 433.62pt>
 File: assets/sdsie_empirical_telemetry.png Graphic file (type png)
 <use assets/sdsie_empirical_telemetry.png>
 Package pdftex.def Info: assets/sdsie_empirical_telemetry.png  used on input li
-ne 252.
+ne 275.
 (pdftex.def)             Requested size: 252.94499pt x 108.40472pt.
 
-Underfull \hbox (badness 2799) in paragraph at lines 261--262
+Underfull \hbox (badness 2799) in paragraph at lines 284--285
 []\T1/stix2/m/n/9.53561 (+20) What re-mains open: the quan-ti-za-tion ker-nel p
 ath.
  []
 
+[5 <./assets/sdsie_empirical_telemetry.png>]
+Overfull \vbox (1.41824pt too high) has occurred while \output is active []
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
 
-[5 <./assets/sdsie_empirical_telemetry.png>] (./sdsie_paper.aux)
+[6] (./sdsie_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `sdsie_paper.out' has not changed.
-(rerunfilecheck)             Checksum: EE838032BEF34B85A74C262AFD523FC7;4088.
+(rerunfilecheck)             Checksum: 305286804141EA2E5BF79751240DE7F9;4373.
  ) 
 Here is how much of TeX's memory you used:
- 16985 strings out of 476182
- 263719 string characters out of 5795595
+ 17006 strings out of 476182
+ 264085 string characters out of 5795595
  1954975 words of memory out of 5000000
- 38384 multiletter control sequences out of 15000+600000
- 1036860 words of font info for 446 fonts, out of 8000000 for 9000
+ 38391 multiletter control sequences out of 15000+600000
+ 1051823 words of font info for 454 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,15n,79p,2197b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,2565b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic
@@ -902,10 +902,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/zapfding/uzdr.pfb>
-Output written on sdsie_paper.pdf (5 pages, 1693099 bytes).
+Output written on sdsie_paper.pdf (6 pages, 1696494 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 53 named destinations out of 1000 (max. 500000)
- 76456 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 289 PDF objects out of 1000 (max. 8388607)
+ 244 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 80560 words of extra memory for PDF output out of 89155 (max. 10000000)
 
