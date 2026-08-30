@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 08:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 08:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -886,11 +886,11 @@ Package rerunfilecheck Info: File `sdsie_paper.out' has not changed.
 (rerunfilecheck)             Checksum: EE838032BEF34B85A74C262AFD523FC7;4088.
  ) 
 Here is how much of TeX's memory you used:
- 16987 strings out of 476182
- 263749 string characters out of 5795595
+ 16985 strings out of 476182
+ 263719 string characters out of 5795595
  1954975 words of memory out of 5000000
  38384 multiletter control sequences out of 15000+600000
- 1037017 words of font info for 447 fonts, out of 8000000 for 9000
+ 1036860 words of font info for 446 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,15n,79p,2197b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb><
@@ -902,10 +902,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/zapfding/uzdr.pfb>
-Output written on sdsie_paper.pdf (5 pages, 1693393 bytes).
+Output written on sdsie_paper.pdf (5 pages, 1693099 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 233 compressed objects within 3 object streams
+ 278 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
  53 named destinations out of 1000 (max. 500000)
  76456 words of extra memory for PDF output out of 89155 (max. 10000000)
 
