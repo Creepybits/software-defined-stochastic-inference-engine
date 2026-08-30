@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  29 AUG 2026 21:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 08:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -764,7 +764,7 @@ File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Calculating math sizes for size <9.53561> on input line 63.
 
-<assets/sdsie_chant_royal_trace.png, id=79, 1002.3849pt x 498.4221pt>
+<assets/sdsie_chant_royal_trace.png, id=83, 1002.3849pt x 498.4221pt>
 File: assets/sdsie_chant_royal_trace.png Graphic file (type png)
 <use assets/sdsie_chant_royal_trace.png>
 Package pdftex.def Info: assets/sdsie_chant_royal_trace.png  used on input line
@@ -774,9 +774,6 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5.62097> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 68.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <4.015> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 68.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
 -dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
 s/stix2-type1/stix2-mathrm.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/s
@@ -786,8 +783,7 @@ tix2-type1/stix2-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc}{/usr/s
 hare/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc}{/usr/share/
-texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathcal.enc} <./assets/sds
-ie_chant_royal_trace.png>]
+texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathcal.enc}]
 Underfull \hbox (badness 10000) in paragraph at lines 84--85
 []\T1/stix2/b/n/9.53561 (+20) Validated Spec-u-la-tive De-cod-ing: \T1/stix2/m/
 n/9.53561 (+20) A real
@@ -805,8 +801,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--85
 /9.53561 N[]\LS1/stix2/m/n/9.53561 10$ \T1/stix2/m/n/9.53561 (+20) tri-als
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+[]\T1/stix2/b/n/9.53561 (+20) First Real Clutch-to-Execution In-te-gra-tion
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 86--87
+\T1/stix2/b/n/9.53561 (+20) (entropy-gated spec-u-la-tive de-cod-ing): \T1/stix
+2/m/n/9.53561 (+20) Un-like
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 86--87
+\T1/stix2/m/n/9.53561 (+20) new con-troller gen-uinely branches be-tween real
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 86--87
+\T1/stix2/m/n/9.53561 (+20) with roughly neu-tral en-ergy on low-determinism
+ []
+
+[2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc} 
+<./assets/sdsie_chant_royal_trace.png>]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
-7.
+8.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -814,58 +834,65 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc}
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+ [3{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc
+}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathex.enc}{/
+usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc}
+]
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 \T1/stix2/m/n/9.53561 (+20) We sep-a-rately bench-mark a real scout(Llama-3.2-
  []
 
 
-Underfull \hbox (badness 3690) in paragraph at lines 191--192
+Underfull \hbox (badness 3690) in paragraph at lines 192--193
 \T1/stix2/m/n/9.53561 (+20) at $[][]\LS1/stix2/m/n/9.53561 250$\T1/stix2/m/n/9.
 53561 (+20) , us-ing full-precision (un-cached)
  []
 
 
-Underfull \hbox (badness 1412) in paragraph at lines 191--192
+Underfull \hbox (badness 1412) in paragraph at lines 192--193
 \T1/stix2/m/n/9.53561 (+20) re-com-pu-ta-tion for both arms to en-sure a fair r
 el-a-tive
  []
 
-[3{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathex.enc}{
-/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc
-}]
-<assets/sdsie_empirical_telemetry.png, id=161, 1011.78pt x 433.62pt>
+<assets/step4_vs_baseline_comparison.png, id=166, 782.32275pt x 332.08064pt>
+File: assets/step4_vs_baseline_comparison.png Graphic file (type png)
+<use assets/step4_vs_baseline_comparison.png>
+Package pdftex.def Info: assets/step4_vs_baseline_comparison.png  used on input
+ line 236.
+(pdftex.def)             Requested size: 252.94499pt x 107.36754pt.
+[4 <./assets/step4_vs_baseline_comparison.png>]
+<assets/sdsie_empirical_telemetry.png, id=183, 1011.78pt x 433.62pt>
 File: assets/sdsie_empirical_telemetry.png Graphic file (type png)
 <use assets/sdsie_empirical_telemetry.png>
 Package pdftex.def Info: assets/sdsie_empirical_telemetry.png  used on input li
-ne 216.
+ne 252.
 (pdftex.def)             Requested size: 252.94499pt x 108.40472pt.
+
+Underfull \hbox (badness 2799) in paragraph at lines 261--262
+[]\T1/stix2/m/n/9.53561 (+20) What re-mains open: the quan-ti-za-tion ker-nel p
+ath.
+ []
 
 
 Package balance Warning: You have called \balance in second column
 (balance)                Columns might not be balanced.
 
-[4 <./assets/sdsie_empirical_telemetry.png>]
-Overfull \vbox (1.67868pt too high) has occurred while \output is active []
-
-
-[5] (./sdsie_paper.aux)
+[5 <./assets/sdsie_empirical_telemetry.png>] (./sdsie_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `sdsie_paper.out' has not changed.
-(rerunfilecheck)             Checksum: 09E5C967185EB37807F67CDB37F493A4;3697.
+(rerunfilecheck)             Checksum: EE838032BEF34B85A74C262AFD523FC7;4088.
  ) 
 Here is how much of TeX's memory you used:
- 16947 strings out of 476182
- 262991 string characters out of 5795595
- 1950975 words of memory out of 5000000
- 38373 multiletter control sequences out of 15000+600000
- 1035464 words of font info for 431 fonts, out of 8000000 for 9000
+ 16987 strings out of 476182
+ 263749 string characters out of 5795595
+ 1954975 words of memory out of 5000000
+ 38384 multiletter control sequences out of 15000+600000
+ 1037017 words of font info for 447 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,15n,79p,1624b,615s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,2197b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic
@@ -875,10 +902,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/zapfding/uzdr.pfb>
-Output written on sdsie_paper.pdf (5 pages, 1571437 bytes).
+Output written on sdsie_paper.pdf (5 pages, 1693393 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
- 219 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
- 76443 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 233 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 76456 words of extra memory for PDF output out of 89155 (max. 10000000)
 
