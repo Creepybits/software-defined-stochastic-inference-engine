@@ -128,7 +128,7 @@ Code:    Write a Python implementation of a binary search tree with type annotat
 
 ![Entropy-gated speculative decoding vs. matched FP16 baseline](tools/assets/step4_vs_baseline_comparison.png)
 
-*Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
+Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
 trials/prompt. The mechanism is a clear win on Code (33.7% faster, 42.1% lower energy) — the clutch
 speculates 80% of cycles there, at a 90.9% accept rate, higher than fixed-K=5's 85.4% on the same
 prompt, suggesting it's preferentially engaging on genuinely favorable windows, not just toggling
@@ -137,7 +137,7 @@ controller is actually 9–12% slower than plain baseline, with energy roughly f
 per-cycle entropy-refresh forward pass isn't offset by enough speculative benefit. Across all 5
 trials per prompt, the exact fallback/speculation sequence is bit-identical (zero variance) —
 expected given deterministic greedy decoding, and good evidence the mechanism itself is stable, not
-flaky.*
+flaky.
 
 The mechanism helps substantially on highly-speculatable content and currently costs a little on
 content it correctly identifies as unfavorable, because computing the entropy signal itself isn't
