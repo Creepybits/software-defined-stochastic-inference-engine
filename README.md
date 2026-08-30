@@ -1,5 +1,10 @@
 # SDSIE: Software-Defined Stochastic Inference Engine
 
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21499379.svg)](https://doi.org/10.5281/zenodo.21499379)
+[![Hardware](https://img.shields.io/badge/Verified%20On-NVIDIA%20RTX%205090%20Blackwell-10b981.svg)](https://sdsie.github.io/)
+[![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)
+
 **Status: Corrected, component-level validation (August 2026).**
 This repository was substantially revised on 2026-08-29 after independent re-verification found that
 several headline numbers in the original paper and README (kernel latency, end-to-end throughput,
@@ -89,7 +94,9 @@ Do not include any introductory explanation, definitions, structural outlines, o
 
 </details>
 
-[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)
+[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)  
+
+___  
 
 ![Energy per token and gear utilization by task category](tools/assets/sdsie_empirical_telemetry.png)
 
