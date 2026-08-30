@@ -1,0 +1,20 @@
+timestamp,category,theta_low,theta_high,tokens,throughput_tok_sec,avg_power_watts,total_energy_joules,joules_per_token,speculative_cycles,fallback_steps,fallback_pct,draft_accept_rate_pct
+2026-08-30T07:38:15.265528,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",0.55,1.25,80,44.14,186.73,338.4223,4.230279,12,25,67.6,71.7
+2026-08-30T07:44:26.294547,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem,0.55,1.25,250,36.63,350.23,2390.3348,9.561339,16,199,92.6,43.8
+2026-08-30T07:44:33.466359,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics,0.55,1.25,255,36.29,361.92,2543.315,9.973784,47,95,66.9,48.1
+2026-08-30T07:44:38.283534,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code,0.55,1.25,255,54.57,328.15,1533.4805,6.013649,44,11,20.0,90.9
+2026-08-30T08:01:13.650877,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem_trial1,0.55,1.25,250,36.73,348.19,2369.898,9.479592,16,199,92.6,43.8
+2026-08-30T08:01:17.958586,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem_trial2,0.55,1.25,250,38.11,392.25,2573.2443,10.292977,16,199,92.6,43.8
+2026-08-30T08:01:24.720090,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem_trial3,0.55,1.25,250,37.74,394.84,2615.2856,10.461142,16,199,92.6,43.8
+2026-08-30T08:01:31.618470,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem_trial4,0.55,1.25,250,37.01,396.76,2680.1237,10.720495,16,199,92.6,43.8
+2026-08-30T08:01:38.324201,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Poem_trial5,0.55,1.25,250,38.09,397.48,2608.7653,10.435061,16,199,92.6,43.8
+2026-08-30T08:01:43.037706,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics_trial1,0.55,1.25,255,36.88,370.51,2562.0869,10.047399,47,95,66.9,48.1
+2026-08-30T08:01:50.108993,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics_trial2,0.55,1.25,255,36.8,366.3,2538.0709,9.953219,47,95,66.9,48.1
+2026-08-30T08:01:57.188327,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics_trial3,0.55,1.25,255,36.76,368.52,2556.3263,10.024809,47,95,66.9,48.1
+2026-08-30T08:02:04.388120,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics_trial4,0.55,1.25,255,36.16,370.78,2614.9421,10.254675,47,95,66.9,48.1
+2026-08-30T08:02:11.407327,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Physics_trial5,0.55,1.25,255,37.07,371.41,2554.9066,10.019241,47,95,66.9,48.1
+2026-08-30T08:02:13.763928,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code_trial1,0.55,1.25,255,55.78,340.51,1556.7974,6.105088,44,11,20.0,90.9
+2026-08-30T08:02:18.487777,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code_trial2,0.55,1.25,255,55.65,339.92,1557.6945,6.108606,44,11,20.0,90.9
+2026-08-30T08:02:23.230386,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code_trial3,0.55,1.25,255,55.39,342.17,1575.1281,6.176973,44,11,20.0,90.9
+2026-08-30T08:02:28.029619,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code_trial4,0.55,1.25,255,54.85,343.08,1595.1279,6.255404,44,11,20.0,90.9
+2026-08-30T08:02:32.816645,"Entropy-Gated Speculative Scout (1B<->8B, real branching)",Code_trial5,0.55,1.25,255,54.92,343.59,1595.2467,6.255869,44,11,20.0,90.9
