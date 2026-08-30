@@ -73,6 +73,24 @@ The clutch's decisions are real and correctly computed; this specific run's gene
 act on them (this is the reference-server gap noted above) — the entropy curve is genuine, the k(t)
 panel is diagnostic.*
 
+<details>
+<summary>📜 <b>Click to view the input prompt</b></summary>
+
+```
+Prompt: Write a Chant Royal poem in English, following this exact structure:
+- Five stanzas of eleven lines each, plus a shorter closing stanza (an envoi) of five lines.
+- Use only five rhyme sounds across the entire poem — the same five sounds must be reused in every stanza, following this rhyme scheme: ababccddedE
+- The capital E marks a refrain line: the exact same line, word for word, must appear as the final line of every one of the five main stanzas, and again as the final line of the envoi.
+- The envoi follows the pattern ddedE, using the same rhyme sounds as the main stanzas, and ends with the same refrain line.
+- Choose a serious or ceremonial subject in keeping with the form's traditional gravity.
+
+Do not include any introductory explanation, definitions, structural outlines, or closing remarks. Output only the raw poem verses from the very first word to the final line.
+```
+
+</details>
+
+[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)
+
 ![Energy per token and gear utilization by task category](tools/assets/sdsie_empirical_telemetry.png)
 
 *Energy per token and entropy-gate engagement across three task categories, single-model harness
