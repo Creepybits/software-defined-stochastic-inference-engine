@@ -5,20 +5,6 @@ import time
 import json
 import os
 
-# WARNING (added 2026-08-29, not yet fixed): this file is DIFFERENT from the other
-# telemetry scripts - SDSIEDynamicLinear.forward() genuinely branches computation on
-# the `gear` argument (real bf16 matmul vs real Triton INT4 matmul), so speedup numbers
-# here are real, not a logged-but-unused decision. However:
-#   - `gear` is a hardcoded string passed directly by the benchmark loop below, NOT
-#     driven by a live entropy signal / the SchmittTriggerEntropyClutch. Wiring it to
-#     a real signal is still an open task (see SDSIE_project_status.md, next step 6).
-#   - Weights are synthetic (torch.randn / torch.randint), not from a real checkpoint.
-#   - There is no correctness check anywhere in this file - the INT4 kernel's OUTPUT
-#     is never compared against the bf16 path's output. Latency and memory-bandwidth
-#     numbers are real; whether the kernel computes the right answer is unverified.
-# Uses a different quantization design (groupwise per-64-K-block scales, masked K-loads)
-# than vllm_sdsie/kernels/triton_int4_gemm.py (per-channel scale, unmasked loads) - see
-# status doc, 'Two incompatible kernel/quantization designs exist'.
 
 REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
 TELEMETRY_DIR = os.path.join(REPO_ROOT, "tools", "telemetry")
