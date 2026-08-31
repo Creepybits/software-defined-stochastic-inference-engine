@@ -2,18 +2,6 @@
 sweep_real_model.py - Empirical Llama-3.1-8B Parameter Sweep
 Hardware: NVIDIA GeForce RTX 5090 Blackwell
 Task: Chant Royal Poetic Structure (Max 512 tokens)
-
-WARNING (added 2026-08-29, not yet fixed): this script computes k via
-SDSIESpeculativeController.plan_speculation_step() and logs it as
-'speculation_percentage', but the generation loop below never branches on
-k - every step does one plain forward pass + argmax regardless of the
-clutch's decision. Numbers here (joules_per_token, throughput_tok_s) reflect
-plain FP16 generation with KV-cache, NOT accelerated speculative decoding,
-even though the output columns are named as if they were. Same
-logged-but-not-acted-on pattern as sdsie_server.py and others - see
-SDSIE_project_status.md, 'compute a signal, log it, never act on it'.
-Useful for checking clutch/gear behavior (theta_low/theta_high/alpha
-sweeps) but NOT as evidence of real speculative decoding performance.
 """
 
 import time
