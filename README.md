@@ -5,6 +5,15 @@
 [![Hardware](https://img.shields.io/badge/Verified%20On-NVIDIA%20RTX%205090%20Blackwell-10b981.svg)](https://sdsie.github.io/)
 [![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)  
 
+**Looking for the fully-validated result?** The scout→target speculative
+decoding component (real, independently reproduced: 1.81× speedup, 32.5–60% energy
+reduction) has been spun out into its own focused repo:
+[sdsie-fixed-k5-speculative-decoding](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding).
+This repo is the broader, still-experimental research project — including the
+entropy-gated dynamic speculation and quantization kernel work, which haven't reached
+that same bar yet.
+___
+
 **Status: Corrected, component-level validation (August 2026).**
 This repository was substantially revised on 2026-08-29 after independent re-verification found that
 several headline numbers in the original paper and README (kernel latency, end-to-end throughput,
