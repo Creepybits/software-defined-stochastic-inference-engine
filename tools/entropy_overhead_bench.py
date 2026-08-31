@@ -6,22 +6,6 @@ step4_theta_alpha_grid_v2.py: runs where the clutch NEVER speculated
 (100% fallback, 0% accept) still ran 4-7% slower than the pure matched
 FP16 baseline, despite doing the same single-forward-pass-per-token work.
 
-Hypothesis: the .item() call inside
-SchmittTriggerEntropyClutch.compute_token_entropy() forces a GPU-CPU
-synchronization every single step (needed to get a Python bool for the
-plan_speculation_step() branch decision), which breaks PyTorch's normal
-async kernel queueing and adds real, measurable per-step overhead --
-independent of whether speculation actually happens.
-
-This script isolates JUST the entropy computation (no model, no clutch
-decision logic, no scout) and times it many times at real vocab size,
-comparing three variants:
-  1. As currently implemented (with .item() sync every call)
-  2. Same math, but only syncing once at the very end (no per-call sync)
-  3. A trimmed version of the math itself (fewer intermediate tensors)
-
-Run this on the RTX 5090 -- timing GPU async effects on CPU-only hardware
-is meaningless.
 """
 
 import torch
