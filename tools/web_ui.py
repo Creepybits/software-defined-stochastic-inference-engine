@@ -1,6 +1,6 @@
 # web_ui.py
 """
-SDSIE Sovereign Web Interface
+SDSIE Web Interface
 A lightweight, dependency-free local Web UI connecting directly to SDSIE's OpenAI-compatible server.
 """
 
