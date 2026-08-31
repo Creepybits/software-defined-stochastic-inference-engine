@@ -7,15 +7,6 @@ same 3 prompts, same N-trial aggregation, same telemetry schema where
 applicable) EXCEPT it contains no clutch, no scout model, and no speculative
 branching at all -- just a plain target-only forward-pass-per-token loop.
 
-Why this script exists (rather than just reusing benchmark_academic_validation_v4.py's
-baseline): that script's baseline was written independently, with its own
-warmup handling and instrumentation choices. Any difference between it and
-step4's numbers could partly reflect harness differences, not just the
-entropy-gated mechanism itself. This script isolates that variable: the ONLY
-difference between this script and step4_entropy_gated_scout.py is the
-presence/absence of the clutch + scout + speculative branching. Everything
-else (power monitor, warmup steps, prompt text, trial count, model loading)
-is identical on purpose.
 """
 
 import torch
