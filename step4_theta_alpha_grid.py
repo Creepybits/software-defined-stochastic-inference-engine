@@ -1,20 +1,6 @@
 """
 step4_theta_alpha_grid.py
 
-Joint sweep of (theta_low, theta_high) x alpha, run through the REAL branching
-entropy-gated speculative controller (same mechanism as
-step4_entropy_gated_scout.py), across all 3 reference prompts.
-
-Why joint, not sequential: theta and alpha interact (alpha changes how smooth/
-jumpy the entropy signal looks BEFORE it's compared to the theta thresholds),
-so tuning theta against an untested alpha risks anchoring to the wrong point.
-This script varies both together to avoid that.
-
-Reuses the existing FP16 baseline numbers from
-tools/telemetry/fp16_baseline_matched_n5_summary.json rather than re-running
-the baseline (it doesn't depend on theta/alpha, so re-running it would be
-wasted compute).
-
 Grid: 4 theta combos x 3 alpha values x 3 prompts x N=3 trials = 108 trials.
 """
 
