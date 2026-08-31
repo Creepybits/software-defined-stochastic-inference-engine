@@ -1,17 +1,5 @@
 """
 step4_theta_alpha_grid_v2.py
-
-Follow-up to step4_theta_alpha_grid.py: pushes theta MORE conservative than the
-best-performing combo found in the first grid (theta_low=0.35, theta_high=1.00),
-to see whether the trend toward smaller losses on Poem/Physics continues,
-plateaus, or reverses.
-
-Skips alpha=0.15 -- the first grid showed this can cause ZERO speculative
-engagement at tight theta (Poem, theta(0.35,1.0), alpha=0.15: 0% accept rate,
-100% fallback), which isn't a useful data point for this follow-up.
-
-Grid: 2 theta combos x 2 alpha values x 3 prompts x N=3 trials = 36 trials.
-Reuses the same FP16 baseline reference as the first grid.
 """
 
 import torch
