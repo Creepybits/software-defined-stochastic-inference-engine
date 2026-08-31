@@ -4,21 +4,6 @@ SDSIE Open-Source Reference Server
 High-efficiency autoregressive inference with real-time Schmitt-trigger entropy telemetry
 and automated JSON session logging.
 
-WARNING (added 2026-08-29, not yet fixed): this is the confirmed source of the paper's
-Fig. 1 telemetry (telemetry_trace schema: step/mode/k_draft/entropy_bits matches exactly).
-The entropy values and clutch decisions (k_draft) ARE real - computed correctly from real
-model logits via the verified SDSIESpeculativeController. However, the generation loop
-below never branches on k_proposal - every step is one plain cached forward pass + argmax,
-regardless of what the clutch decided. No scout model, no draft/verify cycle. So:
-  - entropy_bits in the saved trace: genuine, trustworthy.
-  - k_draft / mode in the saved trace: genuine clutch *decisions*, but they never affected
-    generation - the run was ordinary single-model decoding throughout.
-  - throughput_tok_s in the saved trace: reflects plain generation speed, NOT accelerated
-    speculative decoding, despite variable names implying otherwise.
-Same logged-but-not-acted-on pattern as sweep_real_model.py, harness_telemetry.py, and
-cognitive_benchmark.py - see SDSIE_project_status.md, 'compute a signal, log it, never act
-on it'. Do not cite tok/s or energy figures from this script as speculative-decoding
-performance. The entropy trace itself is usable for a corrected, honestly-captioned Fig. 1.
 """
 
 import os
