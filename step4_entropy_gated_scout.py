@@ -5,32 +5,6 @@ FIRST REAL INTEGRATION of the validated Schmitt-trigger entropy clutch
 (vllm_sdsie/kernels/entropy_clutch.py, via SDSIESpeculativeController) into a
 real scout(1B)->target(8B) speculative decoding loop.
 
-This closes the specific gap documented in SDSIE_project_status.md and
-sdsie_paper.tex Section 4.5 ("Remaining Integration Gap"): every prior script
-either (a) computed a clutch decision and never acted on it (sdsie_server.py,
-sweep_real_model.py, harness_telemetry.py, cognitive_benchmark.py), or (b) ran
-real speculation with a FIXED draft window (step3_speculative_scout.py, K=5
-always). This script does neither -- it asks the clutch for k EVERY cycle and
-genuinely branches:
-  - k > 0 : real scout-draft + target-verify cycle (same accept/reject logic
-            as step3_speculative_scout.py, just with k chosen by the clutch
-            instead of hardcoded).
-  - k = 0 : single-step fallback -- the scout model is not called at all,
-            target does one plain forward pass for one token.
-
-HONEST CAVEAT (read before comparing throughput/energy against step3):
-To get a fresh, correct entropy reading before each decision, this script
-performs one extra target-model forward pass per cycle (a "resync" pass after
-each step) that step3_speculative_scout.py does not need, since step3 reuses
-verification logits directly. That means this script pays a small real
-compute cost step3 doesn't -- so raw tok/s and J/tok here are NOT directly
-apples-to-apples with step3's numbers. This is a real, deliberate simplicity
-tradeoff for correctness of the entropy signal, not an oversight. It's a
-natural target for later optimization (reusing verification-step logits
-instead of a fresh resync pass), consistent with real serving systems.
-
-step3_speculative_scout.py is left completely untouched as the clean,
-already-validated reference implementation.
 """
 
 import torch
