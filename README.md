@@ -6,7 +6,7 @@
 [![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)  
 
 **Looking for the fully-validated result?** The scout→target speculative
-decoding component (real, independently reproduced: 1.81× speedup, 32.5–60% energy
+decoding component (real, independently reproduced: 1.82× speedup, 32.6–60.3% energy
 reduction) has been spun out into its own focused repo:
 [sdsie-fixed-k5-speculative-decoding](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding).
 This repo is the broader, still-experimental research project — including the
@@ -49,8 +49,8 @@ quantization kernel path; that connection is the main remaining engineering task
 | Entropy clutch — driving real speculative decoding | ✅ **Validated**, real | `step4_entropy_gated_scout.py`: genuinely branches scout/fallback execution based on live entropy — see below |
 | Entropy clutch — driving the reference server | ❌ **Not yet connected** | `sdsie_server.py` still computes a decision but does not act on it |
 | Entropy clutch — driving the quantization kernel | ❌ **Not yet connected** | `SDSIEDynamicLinear` branches on a `gear` argument, but that argument comes from a benchmark loop, not the live clutch |
-| Speculative decoding (scout→target, fixed K=5) | ✅ **Validated**, real | Up to 1.81× speedup at 85.4% accept rate, 100% output fidelity, N=10 trials/prompt |
-| Speculative decoding — energy reduction | ✅ **Validated**, real | 32.5–60.0% lower J/token vs. FP16 baseline, task-dependent, same N=10 runs above |
+| Speculative decoding (scout→target, fixed K=5) | ✅ **Validated**, real | Up to 1.82× speedup at 85.4% accept rate, 100% output fidelity, N=10 trials/prompt (re-verified 2026-09-02 with a corrected warmup methodology — see [spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding)) |
+| Speculative decoding — energy reduction | ✅ **Validated**, real | 32.6–60.3% lower J/token vs. FP16 baseline, task-dependent, same N=10 runs above |
 | Calibration (real checkpoint → packed weights) | ❌ **Does not exist yet** | Kernel is only tested against synthetic random weights |
 | End-to-end integrated server | ❌ **Not yet built** | Clutch drives speculation (new), but not quantization; no script combines both in one running path |
 
@@ -125,7 +125,7 @@ against `step4_fp16_baseline_matched.py` — structurally identical (same power 
 same prompts, same N=5 trials) except with no clutch, no scout model, and no branching at all.
 
 <details>
-<summary>📜 <b>Click to view the 3 prompts used (same as Table 2 / <code>benchmark_academic_validation_v4.py</code>)</summary>
+<summary>📜 <b>Click to view the 3 prompts used</b> (same wording as the fixed-K5 ablation in Table 2, reused here for consistency — this is a separate N=5 benchmark run, <code>step4_entropy_gated_scout.py</code> / <code>step4_fp16_baseline_matched.py</code>, not <code>benchmark_academic_validation_v4.py</code>)</summary>
 
 ```
 Poem:    Write an original Chant Royal poem in English celebrating mathematics.
@@ -185,7 +185,7 @@ separately-launched benchmark runs.
 | Kernel latency | 28.60 µs (–63.1%) | 76.49 µs (–4.0%) | Never reproduced by any script in this repo; real branching test shows a much smaller effect |
 | Memory bandwidth | 75.0% | 71.9–73.4% | Close to original claim; minor correction |
 | End-to-end throughput | 50.52 tok/s ("speculative") | 50.13 tok/s (plain generation) | Same script produces this number, but it does not perform real speculation (see Current Status) |
-| Energy reduction | 46.7% (flat, single figure, 6.40→3.41 J) | **32.5–60.0%, task-dependent** (real, N=10 trials/prompt, 100% fidelity) | Original flat figure unreproducible; real measurement (found in `academic_validation_results_v4.json`, already collected but not previously surfaced) shows reduction scales with draft-acceptance rate rather than being constant |
+| Energy reduction | 46.7% (flat, single figure, 6.40→3.41 J) | **32.6–60.3%, task-dependent** (real, N=10 trials/prompt, 100% fidelity) | Original flat figure unreproducible; real measurement shows reduction scales with draft-acceptance rate rather than being constant. Updated 2026-09-02: a warmup-methodology bug (missing in this repo's `benchmark_academic_validation_v4.py`, present in the standalone matched-baseline script) was found and fixed, revising this from the previously-reported 32.5–60.0% (`academic_validation_results_v4.json`). Canonical, actively-maintained figures now live in the [fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding); `benchmark_academic_validation_v4.py` and its telemetry in this repo are kept for historical reference only. |
 
 Full details and real telemetry are in [`sdsie_paper.tex`](./sdsie_paper.tex) (build with
 `pdflatex sdsie_paper.tex` — run twice) and in `tools/telemetry/`, where every number above is
@@ -203,7 +203,7 @@ step4_entropy_gated_scout.py      - Same, but clutch genuinely chooses k each cy
 step4_fp16_baseline_matched.py    - Structural twin of step4, no clutch/scout, for clean comparison
 step4_theta_alpha_grid.py         - Joint theta/alpha sweep (real branching), 4 theta x 3 alpha x 3 prompts
 step4_theta_alpha_grid_v2.py      - Follow-up sweep, tighter thresholds than grid v1's best result
-benchmark_academic_validation_v4.py - N=10 baseline-vs-speculative ablation (fixed K=5)
+benchmark_academic_validation_v4.py - N=10 baseline-vs-speculative ablation (fixed K=5) -- SUPERSEDED 2026-09-02, see spin-off repo
 step2_triton_dynamic.py           - Real branching INT4/FP16 kernel benchmark
 sweep_real_model.py               - Clutch behavior across theta configurations (not yet wired to execution)
 sdsie_server.py                   - Reference server (clutch computed, not yet enacted)
@@ -221,6 +221,12 @@ tools/
 
 Each script writes its output to `tools/telemetry/` under a unique filename. None of them require
 each other except where noted (`sdsie_speculator.py` depends on `entropy_clutch.py`).
+
+> **Note (2026-09-02):** `benchmark_academic_validation_v4.py` below is kept for historical
+> reference but is superseded — it lacks a warmup step that the matched baseline script has,
+> which was found to bias its numbers. The canonical, warmup-corrected fixed-K5 results now live
+> in the [fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding)
+> (`benchmark_ablation.py`). Run that repo's script if you want current, trustworthy numbers.
 
 ```bash
 # Real speculative decoding ablation, fixed K=5 (takes several minutes, loads two models)
