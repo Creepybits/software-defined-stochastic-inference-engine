@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  30 AUG 2026 09:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.8.21)  2 SEP 2026 22:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -812,16 +812,6 @@ Underfull \hbox (badness 5161) in paragraph at lines 86--87
 2/m/n/9.53561 (+20) Un-like
  []
 
-
-Underfull \hbox (badness 2111) in paragraph at lines 86--87
-\T1/stix2/m/n/9.53561 (+20) new con-troller gen-uinely branches be-tween real
- []
-
-
-Underfull \hbox (badness 1406) in paragraph at lines 86--87
-\T1/stix2/m/n/9.53561 (+20) with roughly neu-tral en-ergy on low-determinism
- []
-
 [2{/usr/share/texlive/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc} 
 <./assets/sdsie_chant_royal_trace.png>]
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
@@ -854,30 +844,28 @@ Underfull \hbox (badness 1412) in paragraph at lines 192--193
 el-a-tive
  []
 
-<assets/step4_vs_baseline_comparison.png, id=170, 782.32275pt x 332.08064pt>
-File: assets/step4_vs_baseline_comparison.png Graphic file (type png)
-<use assets/step4_vs_baseline_comparison.png>
-Package pdftex.def Info: assets/step4_vs_baseline_comparison.png  used on input
- line 236.
-(pdftex.def)             Requested size: 252.94499pt x 107.36754pt.
-[4 <./assets/step4_vs_baseline_comparison.png>]
-<assets/sdsie_empirical_telemetry.png, id=188, 1011.78pt x 433.62pt>
+<assets/step4_vs_baseline_comparison_theta_0.15_0.7.png, id=171, 1011.78pt x 43
+3.62pt>
+File: assets/step4_vs_baseline_comparison_theta_0.15_0.7.png Graphic file (type
+ png)
+<use assets/step4_vs_baseline_comparison_theta_0.15_0.7.png>
+Package pdftex.def Info: assets/step4_vs_baseline_comparison_theta_0.15_0.7.png
+  used on input line 236.
+(pdftex.def)             Requested size: 252.94499pt x 108.40472pt.
+[4 <./assets/step4_vs_baseline_comparison_theta_0.15_0.7.png>]
+<assets/sdsie_empirical_telemetry.png, id=195, 1011.78pt x 433.62pt>
 File: assets/sdsie_empirical_telemetry.png Graphic file (type png)
 <use assets/sdsie_empirical_telemetry.png>
 Package pdftex.def Info: assets/sdsie_empirical_telemetry.png  used on input li
-ne 275.
+ne 277.
 (pdftex.def)             Requested size: 252.94499pt x 108.40472pt.
 
-Underfull \hbox (badness 2799) in paragraph at lines 284--285
+Underfull \hbox (badness 2799) in paragraph at lines 286--287
 []\T1/stix2/m/n/9.53561 (+20) What re-mains open: the quan-ti-za-tion ker-nel p
 ath.
  []
 
-[5 <./assets/sdsie_empirical_telemetry.png>]
-Overfull \vbox (1.41824pt too high) has occurred while \output is active []
-
-
-[6] (./sdsie_paper.aux)
+[5 <./assets/sdsie_empirical_telemetry.png>] [6] (./sdsie_paper.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -886,13 +874,13 @@ Package rerunfilecheck Info: File `sdsie_paper.out' has not changed.
 (rerunfilecheck)             Checksum: 305286804141EA2E5BF79751240DE7F9;4373.
  ) 
 Here is how much of TeX's memory you used:
- 17006 strings out of 476182
- 264085 string characters out of 5795595
- 1954975 words of memory out of 5000000
+ 17000 strings out of 476182
+ 264126 string characters out of 5795595
+ 1955975 words of memory out of 5000000
  38391 multiletter control sequences out of 15000+600000
- 1051823 words of font info for 454 fonts, out of 8000000 for 9000
+ 1051519 words of font info for 450 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,15n,79p,2565b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,2784b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic
@@ -902,10 +890,10 @@ sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/zapfding/uzdr.pfb>
-Output written on sdsie_paper.pdf (6 pages, 1696494 bytes).
+Output written on sdsie_paper.pdf (6 pages, 1721491 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 244 compressed objects within 3 object streams
+ 295 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
  56 named destinations out of 1000 (max. 500000)
  80560 words of extra memory for PDF output out of 89155 (max. 10000000)
 
