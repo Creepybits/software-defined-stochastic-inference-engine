@@ -117,26 +117,6 @@ configurations (`sweep_real_model.py`) — the empirical basis for the original 
 acted on" finding. This specific script still exhibits that pattern; see the next section for the
 script that closes it.*
 
-### Fixed-K5 Speculative Decoding Results
-
-The headline validated result — real scout(1B)→target(8B) speculative decoding, fixed draft
-window K=5, N=10 trials/prompt, 100% output fidelity. Canonical source:
-[fixed-K5 spin-off repository](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding),
-`benchmark_ablation.py` (warmup-corrected 2026-09-02).
-
-![Throughput, fixed-K5 speculative decoding vs. FP16 baseline](tools/assets/fixed_k5/throughput_baseline_vs_speculative.png)
-
-![Energy per token, fixed-K5 speculative decoding vs. FP16 baseline](tools/assets/fixed_k5/energy_per_token_baseline_vs_speculative.png)
-
-*Throughput and energy per token by prompt, N=10 trials, RTX 5090 Blackwell. Speedup and energy
-reduction both scale with draft-acceptance rate — largest on predictable content (code, +82.3%
-speedup / -60.3% energy) and smaller but still real on less predictable prose (poem, +8.6% / -32.6%).*
-
-![Speedup vs. draft accept rate](tools/assets/fixed_k5/speedup_vs_accept_rate.png)
-
-*Speedup vs. FP16 baseline as a function of draft accept rate, across the three prompts —
-monotonic, consistent with the mechanism's expected behavior.*
-
 ### Entropy-Gated Speculative Decoding Results
 
 `step4_entropy_gated_scout.py` asks the clutch, every cycle, whether to speculate or fall back, and
