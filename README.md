@@ -120,7 +120,8 @@ script that closes it.*
 ### Entropy-Gated Speculative Decoding Results
 
 `step4_entropy_gated_scout.py` asks the clutch, every cycle, whether to speculate or fall back, and
-genuinely branches on the answer. To isolate its effect from harness differences, it's compared
+genuinely branches on the answer, using the tuned thresholds found by the grid search below
+(θ_low=0.15, θ_high=0.70, α=0.65). To isolate its effect from harness differences, it's compared
 against `step4_fp16_baseline_matched.py` — structurally identical (same power monitor, same warmup,
 same prompts, same N=5 trials) except with no clutch, no scout model, and no branching at all.
 
@@ -135,23 +136,24 @@ Code:    Write a Python implementation of a binary search tree with type annotat
 
 </details>
 
-![Entropy-gated speculative decoding vs. matched FP16 baseline](tools/assets/step4_vs_baseline_comparison.png)
+![Entropy-gated speculative decoding vs. matched FP16 baseline](tools/assets/step4_vs_baseline_comparison_theta_0.15_0.7.png)
 
 *Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
-trials/prompt. The mechanism is a clear win on Code (33.7% faster, 42.1% lower energy) — the clutch
-speculates 80% of cycles there, at a 90.9% accept rate, higher than fixed-K=5's 85.4% on the same
-prompt, suggesting it's preferentially engaging on genuinely favorable windows, not just toggling
-randomly. On Poem and Physics, where the clutch mostly falls back (92.6% / 66.9% of cycles), the
-controller is actually 9–12% slower than plain baseline, with energy roughly flat — the extra
-per-cycle entropy-refresh forward pass isn't offset by enough speculative benefit. Across all 5
-trials per prompt, the exact fallback/speculation sequence is bit-identical (zero variance) —
-expected given deterministic greedy decoding, and good evidence the mechanism itself is stable, not
-flaky.*
+trials/prompt, tuned thresholds (θ_low=0.15, θ_high=0.70, α=0.65). The mechanism is a clear win on
+Code (38.8% faster, 45.2% lower energy) — the clutch speculates 83% of cycles there (17.0%
+fallback), at a 91.8% accept rate. On Poem and Physics, where the clutch still mostly falls back
+(98.8% / 89.6% of cycles), tuning sharply cut the deficit seen at the original, arbitrarily-picked
+thresholds (0.55/1.25): Poem is now only 3.0% slower than baseline (was 9.6% slower) and Physics is
+essentially neutral at 0.5% slower (was 11.5% slower), with energy 3.6% and 10.5% lower than
+baseline respectively on those two prompts. Across all 5 trials per prompt, the exact
+fallback/speculation sequence is bit-identical (zero variance) — expected given deterministic
+greedy decoding, and good evidence the mechanism itself is stable, not flaky.*
 
-The mechanism helps substantially on highly-speculatable content and currently costs a little on
-content it correctly identifies as unfavorable, because computing the entropy signal itself isn't
-free. Reducing that per-cycle overhead — e.g. reusing verification-step logits instead of a fresh
-resync pass, as the fixed-K version already does — is the natural next optimization.
+The mechanism helps substantially on highly-speculatable content and, at these tuned thresholds,
+costs very little on content it correctly identifies as less favorable — a marked improvement over
+the original, untuned thresholds above. Reducing the remaining per-cycle overhead further — e.g.
+reusing verification-step logits instead of a fresh resync pass, as the fixed-K version already
+does — remains the natural next optimization.
 
 ### Threshold Tuning: Reducing the Deficit
 
@@ -167,6 +169,10 @@ production defaults across all three prompts simultaneously — not a tradeoff b
 
 No configuration tested eliminates the deficit on Poem or Physics entirely, and tightening
 thresholds further showed diminishing returns without reversing sign.
+
+An independent N=5 confirmation run at this best config (see the updated figure above) matches
+this prediction closely and slightly exceeds it: Poem -3.0%, Physics -0.5%, Code +38.8% —
+reinforcing that this isn't a fluke of the smaller N=3 grid search.
 
 To investigate the remaining deficit, we isolated the entropy computation itself with a standalone
 microbenchmark (`tools/entropy_overhead_bench.py`, no model, no clutch decision logic). The
