@@ -82,7 +82,7 @@ is the main remaining engineering task.
 
 ## Real Telemetry
 
-Every figure below is generated from raw NVML/entropy telemetry in `tools/telemetry/`, produced by
+Every figure below is generated from raw NVML/entropy telemetry in `/telemetry/`, produced by
 the scripts in this repo. Nothing here is illustrative or simulated.
 
 ![Real entropy trace, 538 generation steps, Llama-3.1-8B](assets/sdsie_chant_royal_trace.png)
