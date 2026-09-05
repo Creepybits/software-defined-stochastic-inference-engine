@@ -1,0 +1,2 @@
+timestamp,category,tokens,throughput_tok_sec,avg_power_watts,total_energy_joules,joules_per_token,high_gear_pct,low_gear_pct
+2026-09-05T16:15:45.977896,Speculative Scout (1B->8B),81,29.83,121.97,331.164,4.088444,50.4,49.6

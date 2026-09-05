@@ -1,0 +1,23 @@
+[
+  {
+    "timestamp": "2026-09-05T16:49:58.968120",
+    "hardware": {
+      "gpu": "NVIDIA GeForce RTX 5090 32GB",
+      "driver": "CUDA 13.3 / Driver 610.88"
+    },
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "prompt": "Explain the physics behind how a semiconductor transistor functions at the quantum level.",
+    "gear_distribution": {
+      "high_gear_pct": 61.67,
+      "low_gear_pct": 38.33
+    },
+    "metrics": {
+      "tokens_generated": 60,
+      "throughput_tok_per_sec": 28.82,
+      "average_power_watts": 134.76,
+      "total_energy_joules": 280.5763,
+      "energy_per_token_joules": 4.676272,
+      "energy_per_token_mj": 4676.27
+    }
+  }
+]

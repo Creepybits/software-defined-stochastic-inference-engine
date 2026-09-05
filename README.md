@@ -5,13 +5,18 @@
 [![Hardware](https://img.shields.io/badge/Verified%20On-NVIDIA%20RTX%205090%20Blackwell-10b981.svg)](https://sdsie.github.io/)
 [![Live Portal](https://img.shields.io/badge/Interactive%20Portal-sdsie.github.io-a855f7.svg)](https://sdsie.github.io/)  
 
-**Looking for the fully-validated result?** The scout→target speculative
-decoding component (real, independently reproduced: 1.82× speedup, 32.6–60.3% energy
-reduction) has been spun out into its own focused repo:
-[sdsie-fixed-k5-speculative-decoding](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding).
-This repo is the broader, still-experimental research project — including the
-entropy-gated dynamic speculation and quantization kernel work, which haven't reached
-that same bar yet.
+**Looking for the fully-validated result? Start here instead:**
+[sdsie-fixed-k5-speculative-decoding](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding)
+is a real, working, independently-reproduced deliverable: scout→target speculative decoding,
+lossless by construction, up to 1.82x speedup and 32.6-60.3% energy reduction vs. FP16 baseline,
+100% output fidelity, N=10 trials/prompt, published with a DOI. If you want numbers you can rely on
+today, that repo is the one to use or cite.
+
+**This repo (`sdsie-original`) is the broader, still-experimental research bed** it was spun out
+from -- home to the entropy-gated adaptive mechanisms (both speculative-decoding and
+precision-switching variants) that motivated the project, neither of which has reached that same
+bar yet. See [Current Status](#current-status) below for an honest, per-component account of what
+works, what has a real characterized limitation, and what's still unresolved.
 ___
 
 **Status: Corrected, component-level validation (August 2026).**
@@ -44,15 +49,15 @@ quantization kernel path; that connection is the main remaining engineering task
 |---|---|---|
 | INT4 kernel — memory bandwidth reduction | ✅ **Validated**, real | 71.9–73.4% reduction, reproduced across 3 independent scripts |
 | INT4 kernel — latency reduction | ⚠️ **Real, but modest** | ~4% faster than FP16 at batch size 1 (not the 63% originally claimed) |
-| INT4 kernel — output correctness | ❌ **Not yet tested** | No comparison against FP16 output on real weights; synthetic weights only |
-| Entropy clutch — computation | ✅ **Validated**, real | Line-by-line reviewed, matches paper's equations, reproducible across runs |
+| INT4 kernel — masking/dtype correctness | ✅ **Fixed 2026-09-05** | K-dimension loads were unmasked (unsafe for non-multiple-of-BLOCK_K), and dtype was hardcoded to float16 despite this project using bfloat16 throughout. Both fixed and verified via a numerically-exact end-to-end self-test (`vllm_sdsie/quantization/sdsie_linear.py`). |
+| Calibration (real checkpoint → packed weights) | ✅ **Now exists** (basic) | `vllm_sdsie/quantization/calibrate.py`: real per-output-channel min-max INT4 calibration, no dataset needed. Fills what was previously a complete gap — resolves the "kernel is only tested against synthetic weights" limitation for the calibration step itself, though see the Resolution Gear finding below for its real-world accuracy ceiling. |
+| Entropy clutch — computation | ✅ **Validated**, real | Line-by-line reviewed, matches paper's equations, reproducible across runs. Self-tests corrected 2026-09-05: the previous "cognitive fork" test scenario measured ~17 bits of entropy (indistinguishable from vocabulary-wide noise) while claiming ~2.5 bits — now uses verified, closed-form target entropies and demonstrates genuine hysteresis (not just a static threshold). |
 | Entropy clutch — driving real speculative decoding | ✅ **Validated**, real | `step4_entropy_gated_scout.py`: genuinely branches scout/fallback execution based on live entropy — see below |
+| Entropy clutch — driving precision switching (Resolution Gear) | ✅ **Real branching, sharp fidelity limitation found** | `benchmarks/cognitive_benchmark.py` / `cognitive_fidelity_check.py`: `GatedLinear` genuinely switches individual decoder layers between INT4 and FP16 based on live entropy — the first real end-to-end wiring of this concept. Fidelity holds up well at 1 quantized layer (2 of 3 prompts: zero divergence across 250 tokens) but collapses sharply at 2+ layers (7–10% token match). See [Resolution Gear Results](#resolution-gear-entropy-gated-precision-switching) below. |
 | Entropy clutch — driving the reference server | ❌ **Not yet connected** | `sdsie_server.py` still computes a decision but does not act on it |
-| Entropy clutch — driving the quantization kernel | ❌ **Not yet connected** | `SDSIEDynamicLinear` branches on a `gear` argument, but that argument comes from a benchmark loop, not the live clutch |
-| Speculative decoding (scout→target, fixed K=5) | ✅ **Validated**, real | Up to 1.82× speedup at 85.4% accept rate, 100% output fidelity, N=10 trials/prompt (re-verified 2026-09-02 with a corrected warmup methodology — see [spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding)) |
-| Speculative decoding — energy reduction | ✅ **Validated**, real | 32.6–60.3% lower J/token vs. FP16 baseline, task-dependent, same N=10 runs above |
-| Calibration (real checkpoint → packed weights) | ❌ **Does not exist yet** | Kernel is only tested against synthetic random weights |
-| End-to-end integrated server | ❌ **Not yet built** | Clutch drives speculation (new), but not quantization; no script combines both in one running path |
+| Speculative decoding (scout→target, fixed K=5) | ✅ **Validated**, real | Up to 1.82× speedup at 85.4% accept rate, 100% output fidelity, N=10 trials/prompt — canonical, actively-maintained results now live in the [fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding) |
+| Speculative decoding — energy reduction | ✅ **Validated**, real | 32.6–60.3% lower J/token vs. FP16 baseline, task-dependent — see spin-off repo for current figures |
+| End-to-end integrated server | ❌ **Not yet built** | Clutch drives both speculation and (experimentally) precision switching now, but no script combines them in one running path, and `sdsie_server.py` is still not wired up |
 
 ### The core finding (and what's changed since it was first written)
 
@@ -184,6 +189,63 @@ of that residual deficit is still open; untested candidates include VRAM/bandwid
 the scout model remaining resident even when never invoked, and thermal/clock-state drift between
 separately-launched benchmark runs.
 
+## Resolution Gear (Entropy-Gated Precision Switching)
+
+On 2026-09-05, the entropy-gated precision-switching concept -- SDSIE's other core mechanism
+alongside speculative decoding -- was wired to real computation for the first time.
+`GatedLinear` (`vllm_sdsie/quantization/gated_linear.py`) wraps individual decoder layers so they
+genuinely switch between a real, calibrated INT4 path and the original FP16 path based on a shared
+gear flag, driven every token by the actual `SchmittTriggerEntropyClutch` -- not a logged-but-unused
+decision like the pattern documented throughout this README, and not a hand-rolled duplicate clutch
+(an earlier version of the benchmark script had its own, independent clutch implementation with
+different thresholds -- a sixth instance of this project's recurring duplicate-implementation
+problem, since consolidated to import the one canonical clutch).
+
+**This is not lossless**, unlike the speculative-decoding mechanism above. INT4-quantizing live
+weights changes numerical output whenever that path is used; there is no verification/correction
+step the way there is for speculative decoding, so a wrong guess is never caught -- whatever the
+INT4 path computes is final. `cognitive_fidelity_check.py` measures this directly: exact
+token-level match against an FP16-only baseline, not an assumed-lossless claim.
+
+**Finding: fidelity holds at 1 quantized layer, then collapses sharply at 2+.** A layer-count sweep
+over `mlp.down_proj` across all 32 decoder layers of Llama-3.1-8B-Instruct, real per-channel
+min-max INT4 calibration (`vllm_sdsie/quantization/calibrate.py`):
+
+| Layers gated | Poem | Physics | Code |
+|---|---|---|---|
+| 1 | 100.0% match, no divergence | 35.6% match, diverges at token 88 | 100.0% match, no divergence |
+| 2 | 7.2% match, diverges at token 6 | 9.6% match, diverges at token 20 | 7.6% match, diverges at token 7 |
+| 4 | 2.8% match, diverges at token 6 | 8.0% match, diverges at token 20 | 10.4% match, diverges at token 7 |
+| 32 (all) | 3.6% match, diverges at token 6 | 2.4% match, diverges at token 6 | 9.2% match, diverges at token 7 |
+
+The transition is a cliff, not a gradual slope: 2 layers already looks nearly as degraded as all 32.
+This points to error compounding through the residual stream across simultaneously-quantized layers
+in a single forward pass, rather than `down_proj` being inherently too sensitive to quantize at all
+-- a single layer survives 250 tokens of generation cleanly on 2 of 3 prompts. Whether a more
+accurate calibration scheme (group-wise, activation-aware) would widen the safe range, or whether
+the compounding effect dominates regardless of per-layer accuracy, is untested and the natural next
+question for anyone continuing this thread.
+
+**Performance, independent of the fidelity question**: even where fidelity holds, the INT4 path is
+slower and hotter than FP16 at this decode batch size (single-token, batch=1) -- consistent with an
+earlier isolated kernel benchmark in this project finding the INT4 kernel draws +88% more power and
+is not faster than FP16 at M=1. Real end-to-end confirmation: throughput and power both move
+monotonically with how often the INT4 path gets used (all-32-layer run, N=5 trials/prompt):
+
+| Prompt | INT4 usage | Throughput vs. FP16 | Power vs. FP16 |
+|---|---|---|---|
+| Poem | 29.2% | −2.9% | +0.5% |
+| Physics | 64.4% | −5.7% | +1.7% |
+| Code | 95.6% | −8.1% | +2.7% |
+
+**Where this leaves the concept**: this is now the second time an entropy-gated adaptive mechanism
+in this project has been tested for real and found to underperform its simpler, fixed alternative --
+the 2026-08-31 grid search already found fixed-K5 speculative decoding beating the tuned
+entropy-gated speculative variant on all three prompts (see Threshold Tuning above). Treating
+fixed-K5 as the validated, shippable result and entropy-gated adaptation (in both its speculative-
+decoding and precision-switching forms) as an open research direction that hasn't paid off yet,
+rather than a near-complete feature, reflects where the evidence actually points as of this writing.
+
 ## Corrections from the original release
 
 | Metric | Originally claimed | Corrected | Why |
@@ -199,58 +261,51 @@ traceable to a raw JSON/CSV file and the script that produced it.
 
 ## Repository structure
 
+*Restructured 2026-09-05.* Top-level layout, matching the actual current repo (not the flat,
+pre-restructuring layout referenced in older commit history):
+
 ```
 vllm_sdsie/
-  kernels/entropy_clutch.py       - Schmitt-trigger entropy clutch (validated)
-  spec_decode/sdsie_speculator.py - Thin controller wrapper (validated)
-  quantization/                   - Empty; no calibration script exists yet
-step3_speculative_scout.py        - Real scout->target speculative decoding (fixed K=5)
-step4_entropy_gated_scout.py      - Same, but clutch genuinely chooses k each cycle (real branching)
-step4_fp16_baseline_matched.py    - Structural twin of step4, no clutch/scout, for clean comparison
-step4_theta_alpha_grid.py         - Joint theta/alpha sweep (real branching), 4 theta x 3 alpha x 3 prompts
-step4_theta_alpha_grid_v2.py      - Follow-up sweep, tighter thresholds than grid v1's best result
-benchmark_academic_validation_v4.py - N=10 baseline-vs-speculative ablation (fixed K=5) -- SUPERSEDED 2026-09-02, see spin-off repo
-step2_triton_dynamic.py           - Real branching INT4/FP16 kernel benchmark
-sweep_real_model.py               - Clutch behavior across theta configurations (not yet wired to execution)
-sdsie_server.py                   - Reference server (clutch computed, not yet enacted)
-tools/
-  cognitive_benchmark.py          - Per-category energy/gear telemetry
-  harness_telemetry.py            - Per-token live entropy/gear trace
-  entropy_overhead_bench.py       - Isolated microbenchmark of the entropy computation's sync cost
-  web_ui.py                       - Minimal browser UI for the reference server
-  plot_*.py                       - Generates the figures in the paper
-  telemetry/                      - Raw JSON/CSV output from every run above
-  assets/                         - Generated plots (PNG)
+  kernels/entropy_clutch.py         - Schmitt-trigger entropy clutch (validated)
+  kernels/triton_int4_gemm.py       - INT4 GEMM kernel (masking/dtype bugs fixed 2026-09-05)
+  spec_decode/sdsie_speculator.py   - Thin controller wrapper (validated)
+  quantization/sdsie_linear.py      - vLLM-style Linear layer using the kernel (odd-K validation added)
+  quantization/calibrate.py         - Real per-channel min-max INT4 calibration (new)
+  quantization/gated_linear.py      - GatedLinear + GearState: real INT4/FP16 branching (new)
+  patch.py                          - vLLM quantization-registry hook, now actually called on import
+benchmarks/
+  bench_common.py                   - Shared NVML monitor, closed-loop warmup, drift diagnostics
+  cognitive_benchmark.py            - Full N-trial Resolution Gear benchmark (real branching, fidelity-checked)
+  cognitive_fidelity_check.py       - Fast fidelity-only iteration tool (no warmup needed -- see script docstring)
+  benchmark_ablation.py, fp16_baseline.py - Fixed-K5 speculative decoding harness (see spin-off repo for canonical results)
+  plot_*.py                         - Figure generation, reading from telemetry/
+  (additional exploratory scripts carried over from the pre-restructuring layout,
+   verified to run but not deep-reviewed this session -- see individual file headers)
+docs/                                - Paper source (sdsie_paper.tex) and compiled PDF
+telemetry/                           - Raw JSON/CSV output from every benchmark run
+assets/                              - Generated plots (PNG)
+sdsie_server.py                      - Reference server (clutch computed, not yet enacted)
 ```
 
 ## Running the benchmarks
 
-Each script writes its output to `tools/telemetry/` under a unique filename. None of them require
-each other except where noted (`sdsie_speculator.py` depends on `entropy_clutch.py`).
-
-> **Note (2026-09-02):** `benchmark_academic_validation_v4.py` below is kept for historical
-> reference but is superseded — it lacks a warmup step that the matched baseline script has,
-> which was found to bias its numbers. The canonical, warmup-corrected fixed-K5 results now live
-> in the [fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding)
-> (`benchmark_ablation.py`). Run that repo's script if you want current, trustworthy numbers.
+All benchmark scripts live in `benchmarks/` and write output to `telemetry/` under a unique
+filename. For canonical, trustworthy fixed-K5 speculative decoding numbers, use the
+[fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding) instead
+of this repo's copies, which are kept for historical reference.
 
 ```bash
-# Real speculative decoding ablation, fixed K=5 (takes several minutes, loads two models)
-python3 benchmark_academic_validation_v4.py
+cd benchmarks
 
-# Entropy-gated speculative decoding, clutch genuinely branches (N=5 trials, 3 prompts)
-python3 step4_entropy_gated_scout.py
+# Resolution Gear: full N-trial benchmark with real branching + fidelity check
+# (--lock-clocks is opt-in; leave it off under WSL2, it needs root and never succeeds there)
+python3 cognitive_benchmark.py
 
-# Matched FP16 baseline for the above (no clutch/scout, same harness)
-python3 step4_fp16_baseline_matched.py
+# Resolution Gear: fast fidelity-only check, no warmup needed (see script docstring)
+python3 cognitive_fidelity_check.py --num-layers 4
 
-# Real branching INT4 kernel benchmark (fast, no model loading)
-python3 step2_triton_dynamic.py
-
-# Reference server + entropy trace (start server, then send a request)
-python3 sdsie_server.py
-# in a second terminal:
-python3 tools/web_ui.py
+# Fixed-K5 speculative decoding (historical copy; prefer the spin-off repo above)
+python3 benchmark_ablation.py
 ```
 
 ## What we'd ask readers to take from this
