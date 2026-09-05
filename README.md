@@ -85,7 +85,7 @@ is the main remaining engineering task.
 Every figure below is generated from raw NVML/entropy telemetry in `tools/telemetry/`, produced by
 the scripts in this repo. Nothing here is illustrative or simulated.
 
-![Real entropy trace, 538 generation steps, Llama-3.1-8B](tools/assets/sdsie_chant_royal_trace.png)
+![Real entropy trace, 538 generation steps, Llama-3.1-8B](assets/sdsie_chant_royal_trace.png)
 
 *Live Shannon entropy and clutch decisions from a real 538-token generation (`sdsie_server.py`).
 The clutch's decisions are real and correctly computed; this specific run's generation loop does not
@@ -108,14 +108,14 @@ Do not include any introductory explanation, definitions, structural outlines, o
 
 </details>
 
-[View the raw session trace](tools/telemetry/sessions/sdsie_trace_20260829_013226.json)
+[View the raw session trace](telemetry/sessions/sdsie_trace_20260829_013226.json)
 
-![Energy per token and gear utilization by task category](tools/assets/sdsie_empirical_telemetry.png)
+![Energy per token and gear utilization by task category](assets/sdsie_empirical_telemetry.png)
 
 *Energy per token and entropy-gate engagement across three task categories, single-model harness
 (`cognitive_benchmark.py`). Lower J/token and higher gate-engagement both track task determinism.*
 
-![Parameter sensitivity sweep across nine threshold configurations](tools/assets/sdsie_parameter_sweep_pareto.png)
+![Parameter sensitivity sweep across nine threshold configurations](assets/sdsie_parameter_sweep_pareto.png)
 
 *Clutch engagement vs. hysteresis threshold, and the resulting flat throughput across all nine
 configurations (`sweep_real_model.py`) — the empirical basis for the original "gate computed but not
@@ -141,7 +141,7 @@ Code:    Write a Python implementation of a binary search tree with type annotat
 
 </details>
 
-![Entropy-gated speculative decoding vs. matched FP16 baseline](tools/assets/step4_vs_baseline_comparison_theta_0.15_0.7.png)
+![Entropy-gated speculative decoding vs. matched FP16 baseline](assets/step4_vs_baseline_comparison_theta_0.15_0.7.png)
 
 *Throughput and energy, entropy-gated real-branching controller vs. matched FP16 baseline, N=5
 trials/prompt, tuned thresholds (θ_low=0.15, θ_high=0.70, α=0.65). The mechanism is a clear win on
@@ -255,7 +255,7 @@ rather than a near-complete feature, reflects where the evidence actually points
 | End-to-end throughput | 50.52 tok/s ("speculative") | 50.13 tok/s (plain generation) | Same script produces this number, but it does not perform real speculation (see Current Status) |
 | Energy reduction | 46.7% (flat, single figure, 6.40→3.41 J) | **32.6–60.3%, task-dependent** (real, N=10 trials/prompt, 100% fidelity) | Original flat figure unreproducible; real measurement shows reduction scales with draft-acceptance rate rather than being constant. Updated 2026-09-02: a warmup-methodology bug (missing in this repo's `benchmark_academic_validation_v4.py`, present in the standalone matched-baseline script) was found and fixed, revising this from the previously-reported 32.5–60.0% (`academic_validation_results_v4.json`). Canonical, actively-maintained figures now live in the [fixed-K5 spin-off repo](https://github.com/Creepybits/sdsie-fixed-k5-speculative-decoding); `benchmark_academic_validation_v4.py` and its telemetry in this repo are kept for historical reference only. |
 
-Full details and real telemetry are in [`sdsie_paper.tex`](./sdsie_paper.tex) (build with
+Full details and real telemetry are in [`sdsie_paper.tex`](docs/sdsie_paper.tex) (build with
 `pdflatex sdsie_paper.tex` — run twice) and in `tools/telemetry/`, where every number above is
 traceable to a raw JSON/CSV file and the script that produced it.
 
@@ -318,7 +318,7 @@ high-determinism content and costing a little on low-determinism content, as det
 
 ## Citation
 
-See [`sdsie_paper.tex`](./sdsie_paper.tex) for the current BibTeX entry. The DOI-archived Zenodo
+See [`sdsie_paper.tex`](docs/sdsie_paper.tex) for the current BibTeX entry. The DOI-archived Zenodo
 record will be updated to point to this corrected version.
 
 ## License
