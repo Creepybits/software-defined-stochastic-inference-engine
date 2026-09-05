@@ -180,7 +180,7 @@ this prediction closely and slightly exceeds it: Poem -3.0%, Physics -0.5%, Code
 reinforcing that this isn't a fluke of the smaller N=3 grid search.
 
 To investigate the remaining deficit, we isolated the entropy computation itself with a standalone
-microbenchmark (`tools/entropy_overhead_bench.py`, no model, no clutch decision logic). The
+microbenchmark (`benchmarks/entropy_overhead_bench.py`, no model, no clutch decision logic). The
 computation includes one `.item()` call per step, which forces a GPU-CPU synchronization to get a
 Python-readable value for the branch decision. That sync costs 31.1 µs/call (+32.5% relative to a
 no-sync variant) at real vocabulary size — real, but roughly 0.1% of per-token generation time,
